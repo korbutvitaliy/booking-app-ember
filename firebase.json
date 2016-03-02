@@ -1,0 +1,9 @@
+{
+  "firebase": "booking-app-ember",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

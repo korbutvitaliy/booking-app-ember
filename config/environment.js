@@ -4,8 +4,10 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'booking-app-ember',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     baseURL: '/',
-    locationType: 'auto',
+    firebase: 'https://booking-app-ember.firebaseio.com/',
+    defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
