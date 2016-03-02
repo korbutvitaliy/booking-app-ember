@@ -7,6 +7,9 @@ module.exports = function(environment) {
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     baseURL: '/',
     firebase: 'https://booking-app-ember.firebaseio.com/',
+    torii: {
+      sessionServiceName: 'session'
+    },
     defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {

@@ -1,0 +1,18 @@
+<div class='page-header'>
+		<h1>Welcome, you are signed in!</h1>
+	<div class='panel panel-default'>
+		<div class='panel-heading'>
+			{{session.currentUser.email}}
+
+		</div>
+		<div class='panel-body'>
+			<img src='{{session.currentUser.profileImageURL}}' />
+		</div>
+	</div>	
+</div>
+<div class="container">
+	<h3>Here you can book anything you want (even some whores :))</h3>
+	{{outlet}}
+	
+</div>
+
