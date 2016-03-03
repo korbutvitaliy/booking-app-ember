@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
 		signOut() {
 			this.get('session').close();
 			this.transitionToRoute('/');
-		}
+		},
+		
 	}
 });

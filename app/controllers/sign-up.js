@@ -32,6 +32,14 @@ export default Ember.Controller.extend({
 					});
 				}
 			});
-		}
+		},
+		signUpWith(provider) {
+      		this.get("session").open("firebase", { provider: provider}).then(function(data) {
+        		console.log(data.currentUser);
+     		}).then(() => {
+     		this.transitionToRoute('home');
+     		});
+    	},
+		
 	}
 });

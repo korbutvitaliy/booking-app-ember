@@ -16,6 +16,13 @@ export default Ember.Controller.extend({
 			}, (error) => {
 				this.set('errorMessage', 'Invalid email and password combination :(');
 			});
-		}
+		},
+		signUpWith(provider) {
+      		this.get("session").open("firebase", { provider: provider}).then(function(data) {
+        		console.log(data.currentUser);
+     		}).then(() => {
+     		this.transitionToRoute('home');
+     		});
+    	},
 	}
 });
