@@ -20,18 +20,16 @@ export default Ember.Controller.extend({
 					this.set('errorMessage', 'This email is already registred.');
 					console.log(error);
 				} else {
-					// this.store.createRecord('user', {
-					// 	firstName: this.get('firstName'),
-					// 	lastName: this.get('lastName'),
-					// 	email: this.get('email'),
-					// 	uid: this.get('auth.uid'),
-					// }).save();
+					this.get('session').open('firebase', {
+						provider: 'password',
+						email: this.get('email') || '',
+						password: this.get('password') || '',
+					}).then(() => {
 					controller.set('email', null);
 					controller.set('password', null);
-					// controller.set('firstName', null);
-					// controller.set('lastName', null);
 					controller.set('errorMessage', null);
-					controller.transitionToRoute('sign-in');
+					controller.transitionToRoute('home');
+					});
 				}
 			});
 		}
