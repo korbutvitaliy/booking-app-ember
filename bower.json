@@ -8,5 +8,8 @@
     "bootstrap-sass": "^3.3.6",
     "firebase": "^2.1.0",
     "font-awesome": "~4.5.0"
+  },
+  "resolutions": {
+    "ember": "~2.4.1"
   }
 }

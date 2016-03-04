@@ -1197,7 +1197,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5827793886872" />
+        <entry key="$PROJECT_DIR$" value="5827796542818" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1710,7 +1710,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="260" y="80" width="1400" height="1000" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
