@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 			}).then(() => {
 				controller.set('email', null);
 				controller.set('password', null);
-				controller.transitionToRoute('home');
+				controller.transitionToRoute('services');
 			}, (error) => {
 				this.set('errorMessage', 'Invalid email and password combination :(');
 			});
@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
       		this.get("session").open("firebase", { provider: provider}).then(function(data) {
         		console.log(data.currentUser);
      		}).then(() => {
-     		this.transitionToRoute('home');
+     		this.transitionToRoute('services');
      		});
     	},
 	}

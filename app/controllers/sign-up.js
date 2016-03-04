@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
 					controller.set('email', null);
 					controller.set('password', null);
 					controller.set('errorMessage', null);
-					controller.transitionToRoute('home');
+					controller.transitionToRoute('services');
 					});
 				}
 			});
@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
       		this.get("session").open("firebase", { provider: provider}).then(function(data) {
         		console.log(data.currentUser);
      		}).then(() => {
-     		this.transitionToRoute('home');
+     		this.transitionToRoute('services');
      		});
     	},
 		
