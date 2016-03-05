@@ -3,7 +3,14 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	
 	actions: {
-		signIn: function(provider) {
+		signIn(provider) {
+			if (provider === 'google') {
+				this.get("session").open("firebase", { provider: provider}).then(function(data) {
+        		console.log(data.currentUser);
+     		}).then(() => {
+     		this.transitionToRoute('services');
+     		});
+			} else {
 			let controller = this;
 			this.get('session').open('firebase', {
 				provider: provider,
@@ -16,13 +23,8 @@ export default Ember.Controller.extend({
 			}, (error) => {
 				this.set('errorMessage', 'Invalid email and password combination :(');
 			});
+			}
 		},
-		signUpWith(provider) {
-      		this.get("session").open("firebase", { provider: provider}).then(function(data) {
-        		console.log(data.currentUser);
-     		}).then(() => {
-     		this.transitionToRoute('services');
-     		});
-    	},
+		
 	}
 });

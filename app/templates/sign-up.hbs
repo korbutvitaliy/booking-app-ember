@@ -7,12 +7,10 @@
 </div>
 {{input type='email' id='email' class='form-control' value=email placeholder='email'}}
 {{input type='password' class='form-control' value=password placeholder='password'}}
-<button class='btn btn-success' {{action 'signUp'}} disabled={{isDisabled}}>
+<button class='btn btn-success' {{action 'signUp' 'password'}} disabled={{isDisabled}}>
 	{{fa-icon 'user-plus'}} Sign Up
 </button>
 <h4>Sign Up with</h4>
-<button class="btn btn-social btn-lg btn-google" {{action "signUpWith" "google"}}> <span class="fa fa-google"></span> Google+</button>
-<button class="btn btn-social btn-lg btn-facebook disabled"> <span class="fa fa-facebook"> </span> Facebook</button>
-<button class="btn btn-social btn-lg btn-twitter disabled"><span class="fa fa-twitter"> </span> Twitter  </button>
+<button class="btn btn-social btn-lg btn-google" {{action "signUp" "google"}}> <span class="fa fa-google"></span> Google+</button>
 <h5>Or sign in if you have account:</h5>
 {{#link-to 'sign-in' class='btn btn-primary'}}Sign In{{/link-to}}

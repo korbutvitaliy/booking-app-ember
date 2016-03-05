@@ -21,9 +21,7 @@
 		</button>
 	{{/if}}
 	<h4>Login with</h4>
-	<button class="btn btn-social btn-lg btn-google" {{action "signUpWith" "google"}}> <span class="fa fa-google"></span> Google+</button>
-	<button class="btn btn-social btn-lg btn-facebook disabled"> <span class="fa fa-facebook"></span> Facebook</button>
-	<button class="btn btn-social btn-lg btn-twitter disabled"><span class="fa fa-twitter"></span> Twitter</button>
+	<button class="btn btn-social btn-lg btn-google" {{action "signIn" "google"}}> <span class="fa fa-google"></span> Google+</button>
 	<h5>Or sign up if you don't have account yet:</h5>
 	{{#link-to 'sign-up' class='btn btn-success'}}Sign Up{{/link-to}}
 </div>

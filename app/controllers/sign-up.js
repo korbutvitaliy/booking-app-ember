@@ -7,8 +7,14 @@ export default Ember.Controller.extend({
 	isDisabled: Ember.computed.not('isValid'),
 	firebase: Ember.inject.service(),
 	actions: {
-		signUp() {
-			
+		signUp(provider) {
+			if (provider === 'google') {
+					this.get("session").open("firebase", { provider: provider}).then(function(data) {
+        			console.log(data.currentUser);
+     			}).then(() => {
+     			this.transitionToRoute('services');
+     		});
+			} else {
 			let controller = this;
 			this.get('firebase').createUser({
 				email: this.get('email'),
@@ -21,7 +27,7 @@ export default Ember.Controller.extend({
 					console.log(error);
 				} else {
 					this.get('session').open('firebase', {
-						provider: 'password',
+						provider: provider,
 						email: this.get('email') || '',
 						password: this.get('password') || '',
 					}).then(() => {
@@ -32,14 +38,7 @@ export default Ember.Controller.extend({
 					});
 				}
 			});
+			}
 		},
-		signUpWith(provider) {
-      		this.get("session").open("firebase", { provider: provider}).then(function(data) {
-        		console.log(data.currentUser);
-     		}).then(() => {
-     		this.transitionToRoute('services');
-     		});
-    	},
-		
 	}
 });
