@@ -16,6 +16,7 @@ Router.map(function() {
       path: ':service_id'
     });
   });
+  this.route('bookings');
 });
 
 

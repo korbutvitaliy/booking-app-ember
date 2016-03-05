@@ -1,6 +1,5 @@
 <div class='page-header'>
 	<h1>Sign Up</h1>
-	<p>Password must be at least 6 symbols.</p>
 </div>
 <div class='error'>
 	<p>{{errorMessage}}</p>
@@ -8,13 +7,12 @@
 <div>
 {{input type='email' id='email' class='form-control' value=email placeholder='email'}}
 {{input type='password' class='form-control' value=password placeholder='password'}}
-{{input type='checkbox' checked=isDealer}} 
-<label for="checkbox">I'm a drug dealer</label>
+{{#x-select value=role class="form-control"}}
+	{{#each commonUserRoles as |role|}}
+		{{#x-option value=role}}I'm a {{role}}{{/x-option}}
+	{{/each}}
+{{/x-select}}
 </div>
 <button class='btn btn-success' {{action 'signUp' 'password'}} disabled={{isDisabled}}>
 	{{fa-icon 'user-plus'}} Sign Up
 </button>
-<h4>Sign Up with</h4>
-<button class="btn btn-social btn-lg btn-google" {{action "signUp" "google"}}> <span class="fa fa-google"></span> Google+</button>
-<h5>Or sign in if you have account:</h5>
-{{#link-to 'sign-in' class='btn btn-primary'}}Sign In{{/link-to}}

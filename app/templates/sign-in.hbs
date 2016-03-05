@@ -2,14 +2,11 @@
 	<div class='page-header'>
 		<h1>Sign In</h1>
 	</div>
-
 	<div class='error'>
 		<p>{{errorMessage}}</p>
 	</div>
 
-	<label>Email address</label>
 	{{input type='email' id='email' class='form-control' value=email placeholder='email'}}
-	<label>Password</label>
 	{{input type='password' class='form-control' value=password placeholder='password'}}
 	{{#if session.isWorking}}
 		<button class='btn btn-default' disabled='disabled'>
@@ -20,8 +17,4 @@
 			{{fa-icon 'sign-in'}} Sign In
 		</button>
 	{{/if}}
-	<h4>Login with</h4>
-	<button class="btn btn-social btn-lg btn-google" {{action "signIn" "google"}}> <span class="fa fa-google"></span> Google+</button>
-	<h5>Or sign up if you don't have account yet:</h5>
-	{{#link-to 'sign-up' class='btn btn-success'}}Sign Up{{/link-to}}
 </div>

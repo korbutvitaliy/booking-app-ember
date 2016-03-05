@@ -1,5 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  isDealer: DS.attr('boolean')
+  role: DS.attr('string'),
+  bookings: DS.hasMany('booking'),
+  services: DS.hasMany('service')
 });
