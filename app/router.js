@@ -11,6 +11,10 @@ Router.map(function() {
   this.authenticatedRoute('services');
   this.route('services', function() {
     this.route('new');
+
+    this.route('show', {
+      path: ':service_id'
+    });
   });
 });
 
