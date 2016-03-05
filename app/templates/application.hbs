@@ -1,12 +1,13 @@
 <nav class='navbar navbar-default'>
 	<div class='container'>
-		<div class='navbar-brand'><a href="/">Booking-App</a> </div>
-		<div class='navbar-brand'><a href="/#/home">Home</a> </div>
+		<div class='navbar-brand'><a href="/#/services">Booking-App</a> </div>
 		<div class='navbar-right'>
 		{{#if session.isAuthenticated}}
 			<button class='btn btn-default navbar-btn' {{action 'signOut'}}>
 			{{fa-icon 'sign-out'}} Sign Out
 			</button>
+		{{else}}
+			{{#link-to 'sign-in' class='btn btn-primary'}}Sign In{{/link-to}}
 		{{/if}}
 		</div>
 	</div>
