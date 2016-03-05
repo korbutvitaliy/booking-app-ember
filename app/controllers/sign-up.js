@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Firebase from 'firebase';
 
 export default Ember.Controller.extend({
 	emailValid: Ember.computed.match('email', /^.+@.+\..+$/),
@@ -19,9 +20,8 @@ export default Ember.Controller.extend({
 			this.get('firebase').createUser({
 				email: this.get('email'),
 				password: this.get('password'),
-			},
-			
-			(error, data) => {
+			}, 
+			(error, userData) => {
 				if (error) {
 					this.set('errorMessage', 'This email is already registred.');
 					console.log(error);
@@ -31,13 +31,20 @@ export default Ember.Controller.extend({
 						email: this.get('email') || '',
 						password: this.get('password') || '',
 					}).then(() => {
-					controller.set('email', null);
-					controller.set('password', null);
-					controller.set('errorMessage', null);
-					controller.transitionToRoute('services');
-					});
-				}
-			});
+						var user = this.store.createRecord('user', {
+							id: userData.uid,
+							isDealer: this.get('isDealer'),
+						});
+						user.save()
+						.then(() =>{
+							controller.set('email', null);
+							controller.set('password', null);
+							controller.set('errorMessage', null);
+							controller.transitionToRoute('services');
+							});
+						});
+					}
+				});
 			}
 		},
 	}

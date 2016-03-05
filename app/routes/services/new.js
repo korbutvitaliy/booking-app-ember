@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  beforeModel() {
+    if (this.get('user.isDealer') === false) {
+      this.transitionTo('services');
+    }
+  },
   model() {
     return this.store.createRecord('service');
   },

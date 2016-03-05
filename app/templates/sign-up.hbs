@@ -5,8 +5,12 @@
 <div class='error'>
 	<p>{{errorMessage}}</p>
 </div>
+<div>
 {{input type='email' id='email' class='form-control' value=email placeholder='email'}}
 {{input type='password' class='form-control' value=password placeholder='password'}}
+{{input type='checkbox' checked=isDealer}} 
+<label for="checkbox">I'm a drug dealer</label>
+</div>
 <button class='btn btn-success' {{action 'signUp' 'password'}} disabled={{isDisabled}}>
 	{{fa-icon 'user-plus'}} Sign Up
 </button>
