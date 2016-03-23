@@ -9,5 +9,7 @@ export default DS.Model.extend({
   duration: DS.attr('number'),
   image: DS.attr('string'),
   booked: DS.attr('boolean'),
-  bookings: DS.hasMany('booking')
+  bookings: DS.hasMany('booking'),
+  workFrom: DS.attr('string'),
+  workTo: DS.attr('string')
 });

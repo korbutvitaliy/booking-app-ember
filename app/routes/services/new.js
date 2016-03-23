@@ -9,11 +9,10 @@ export default Ember.Route.extend({
   model() {
     return this.store.createRecord('service');
   },
-
   actions: {
 
     saveService(newService) {
-      newService.save().then(() => this.transitionTo('services'));
+       newService.save().then(() => this.transitionTo('services'));
     },
 
     willTransition() {
