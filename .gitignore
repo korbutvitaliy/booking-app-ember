@@ -46,3 +46,7 @@ cordova/platforms/wp8/*.csproj.user
 #browser
 cordova/platforms/browser/build
 cordova/platforms/browser/www
+
+# IDE
+/.idea/
+/*.iml

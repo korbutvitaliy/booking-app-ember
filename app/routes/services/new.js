@@ -1,18 +1,27 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {
+  Route
+} = Ember;
+
+export default Route.extend({
   beforeModel() {
     if (this.get('user.isDealer') === false) {
       this.transitionTo('services');
     }
   },
+
   model() {
     return this.store.createRecord('service');
   },
-  actions: {
 
+  actions: {
     saveService(newService) {
-       newService.save().then(() => this.transitionTo('services'));
+       newService
+         .save()
+         .then(() => {
+           this.transitionTo('services');
+         });
     },
 
     willTransition() {

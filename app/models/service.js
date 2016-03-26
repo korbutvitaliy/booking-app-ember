@@ -1,15 +1,18 @@
-import DS from 'ember-data';
+import Model                from 'ember-data/model';
+import {belongsTo, hasMany} from 'ember-data/relationships';
+import attr                 from 'ember-data/attr';
 
-export default DS.Model.extend({
-  user: DS.belongsTo('user'),
-  name: DS.attr('string'),
-  date: DS.attr('date'),
-  description: DS.attr('string'),
-  price: DS.attr('number'),
-  duration: DS.attr('number'),
-  image: DS.attr('string'),
-  booked: DS.attr('boolean'),
-  bookings: DS.hasMany('booking'),
-  workFrom: DS.attr('string'),
-  workTo: DS.attr('string')
+export default Model.extend({
+  user:        belongsTo('user'),
+  bookings:    hasMany('booking'),
+  
+  name:        attr('string'),
+  date:        attr('date'),
+  description: attr('string'),
+  price:       attr('number'),
+  duration:    attr('number'),
+  image:       attr('string'),
+  booked:      attr('boolean'),
+  workFrom:    attr('string'),
+  workTo:      attr('string')
 });
