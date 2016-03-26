@@ -1,7 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-	model() {
-		return this.store.findAll('service');
-	}
+const {
+  Route
+} = Ember;
+
+export default Route.extend({
+  model() {
+    return this.store.findAll('service');
+  }
 });

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Ember  from 'ember';
 import config from './config/environment';
 
 const Router = Ember.Router.extend({

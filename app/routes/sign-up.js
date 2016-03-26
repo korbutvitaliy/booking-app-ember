@@ -1,9 +1,13 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-	beforeModel() {
-		if (this.get('session.isAuthenticated')) {
-			this.transitionTo('services');
-		}
-	}
+const {
+  Route
+} = Ember;
+
+export default Route.extend({
+  beforeModel() {
+    if (this.get('session.isAuthenticated')) {
+      this.transitionTo('services');
+    }
+  }
 });

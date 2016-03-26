@@ -1,10 +1,17 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {
+  Route
+} = Ember;
+
+export default Route.extend({
   beforeModel() {
-    return this.get('session').fetch().catch((error) => {
-      console.log(error);
-    });
+    return this
+      .get('session')
+      .fetch()
+      .catch((error) => {
+        console.log('application route session fetch error: ', error);
+      });
   },
 
   actions: {
