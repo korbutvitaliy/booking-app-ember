@@ -1,53 +1,40 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
 const {
-  Controller
+  computed: { and, gte, match },
+  Controller,
+  RSVP
 } = Ember;
 
 export default Controller.extend({
-  
-  googleAuth () {
-    this
-      .get("session")
-      .open("firebase", {provider: 'google'})
-      .then(data => {
-        console.log('google auth successful, user: ', data.currentUser);
-        this.transitionToRoute('services');
-      });
-  },
-  
-  emailAuth (provider) {
-    this
-      .get('session')
-      .open('firebase', {
-        provider,
-        email:    this.get('email')    || '',
-        password: this.get('password') || '',
-      })
+
+  emailValid:    match('email', /^.+@.+\..+$/),
+  passwordValid: gte('password.length', 6),
+  isValid:       and('emailValid', 'passwordValid'),
+
+  authenticateWithPassword: task(function * () {
+    const email    = this.get('email');
+    const password = this.get('password');
+    const deferred = RSVP.defer();
+
+    this.send('authenticateWithPassword', {email, password, deferred});
+
+    yield deferred
+      .promise
       .then(() => {
         this.resetController();
-        this.transitionToRoute('services');
       })
-      .catch(error => {
-        this.set('errorMessage', 'Invalid email and password combination :(');
-        console.log('email auth error:', error);
+      .catch(() => {
+        this.set('errorMessage', 'This email is already registered.');
       });
-  },
-  
-  resetController () {
-    this.set('email',    null);
-    this.set('password', null);
-  },
-  
-  actions: {
-    signIn(provider) {
-      
-      if (provider === 'google') {
-        this.googleAuth();
-        return;
-      }
+  }).drop(),
 
-      this.emailAuth(provider);
-    }
+  resetController () {
+    this.setProperties({
+      email:        null,
+      password:     null,
+      errorMessage: null
+    });
   }
 });

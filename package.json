@@ -38,16 +38,20 @@
     "ember-cli-sass": "5.3.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
+    "ember-concurrency": "0.5.17",
     "ember-data": "^2.4.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
+    "ember-route-action-helper": "0.3.0",
+    "ember-simple-auth": "1.1.0-beta.3",
+    "ember-simple-auth-firebase": "0.0.3",
     "ember-social": "0.2.0",
+    "ember-truth-helpers": "1.2.0",
     "emberfire": "1.6.5",
     "emberx-select": "2.0.2",
     "install": "0.5.4",
-    "loader.js": "^4.0.0",
-    "torii": "0.6.1"
+    "loader.js": "^4.0.0"
   }
 }

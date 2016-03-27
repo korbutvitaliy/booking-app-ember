@@ -3,12 +3,22 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'booking-app-ember',
-    environment: environment,
+    environment,
     baseURL: '/',
     firebase: 'https://booking-app-ember.firebaseio.com/',
+
     torii: {
-      sessionServiceName: 'session'
+      sessionServiceName: 'session',
+      providers: {
+        'firebase-simple-auth': {}
+      }
     },
+
+    'ember-simple-auth': {
+      authenticationRoute:      'sign-in',
+      routeAfterAuthentication: 'services'
+    },
+
     defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {

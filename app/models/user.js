@@ -6,5 +6,6 @@ export default Model.extend({
   bookings: hasMany('booking'),
   services: hasMany('service'),
   
-  role:     attr('string')
+  role:     attr('string'),
+  email:    attr('string')
 });

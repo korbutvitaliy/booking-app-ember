@@ -3,8 +3,11 @@
     <div class='navbar-brand'><a href="/#/services">Booking-App</a> </div>
     <div class='navbar-right'>
     {{#if session.isAuthenticated}}
-      <button class='btn btn-default navbar-btn' {{action 'signOut'}}>
-      {{fa-icon 'sign-out'}} Sign Out
+      <button
+        class='btn btn-default navbar-btn'
+        {{action (route-action 'invalidateSession')}}
+      >
+        {{fa-icon 'sign-out'}} Sign Out
       </button>
     {{else}}
       {{#link-to 'sign-in' class='btn btn-primary'}}Sign in{{/link-to}}
