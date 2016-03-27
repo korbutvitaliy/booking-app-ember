@@ -1,7 +1,7 @@
 <h1>All our services:</h1>
-<h2>Total number of services: {{model.length}}</h2>
+<h2>Total number of services: {{model.services.length}}</h2>
 <ul>
-  {{#each model as |service|}}
+  {{#each model.services as |service|}}
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{service.name}}</h3>

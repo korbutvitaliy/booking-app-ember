@@ -1,7 +1,10 @@
+/* jshint ignore:start */
+
 import Ember from 'ember';
 
 const {
-  Route
+  Route,
+  RSVP
 } = Ember;
 
 export default Route.extend({
@@ -12,22 +15,24 @@ export default Route.extend({
   },
 
   model() {
-    return this.store.createRecord('service');
+    const parentModel = this.modelFor('services');
+
+    return RSVP.hash({
+      ...parentModel,
+      newService: this.store.createRecord('service', {
+        user: parentModel.currentUser
+      })
+    });
   },
 
   actions: {
-    saveService(newService) {
-       newService
-         .save()
-         .then(() => {
-           this.transitionTo('services');
-         });
-    },
-
     willTransition() {
       // rollbackAttributes() removes the record from the store
       // if the model 'isNew'
-      this.controller.get('model').rollbackAttributes();
+      this
+        .controller
+        .get('model.newService')
+        .rollbackAttributes();
     }
   }
 });

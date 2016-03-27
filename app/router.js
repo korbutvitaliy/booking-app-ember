@@ -8,13 +8,9 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('sign-up');
   this.route('sign-in');
-  this.authenticatedRoute('services');
   this.route('services', function() {
     this.route('new');
-
-    this.route('show', {
-      path: ':service_id'
-    });
+    this.route('show', { path: ':service_id' });
   });
   this.route('bookings');
 });

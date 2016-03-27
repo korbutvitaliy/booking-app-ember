@@ -1,11 +1,18 @@
+/* jshint ignore:start */
+
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 const {
-  Route
+  Route,
+  RSVP
 } = Ember;
 
-export default Route.extend({
+export default Route.extend(AuthenticatedRouteMixin, {
   model() {
-    return this.store.findAll('service');
+    return RSVP.hash({
+      ...this.modelFor('application'),
+      services: this.store.findAll('service')
+    });
   }
 });
