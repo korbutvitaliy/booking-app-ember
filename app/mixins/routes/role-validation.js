@@ -1,19 +1,22 @@
 import Ember from 'ember';
 
+const {
+  get
+} = Ember;
+
 export default Ember.Mixin.create({
 	permittedRoles: [],
 
-	beforeModel: function(transition) {
-		this._super(transition);
-		this.checkTransition(transition);
+	afterModel: function(model, transition) {
+		this._super(model, transition);
+		this.redirectTrespassers({model, transition});
 	},
 
-	checkTransition: function(transition) {
-		if (this.get('permittedRoles').contains(this.get('currentUser.role'))) {
+	redirectTrespassers: function({model, transition}) {
+		if (this.get('permittedRoles').contains(get(model, 'currentUser.role'))) {
 			return true;
-		} else {
-			transition.abort();
-			this.transitionTo('services')
 		}
+		
+		this.transitionTo('services')
 	}
 });
