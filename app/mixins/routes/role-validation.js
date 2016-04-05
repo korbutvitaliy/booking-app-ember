@@ -20,12 +20,12 @@ export default Ember.Mixin.create({
 		  this.transitionTo('services');
 		  return true;
 	  }
-	});
+	},
 
 	isUserAllowed (currentUser) {
 	  const permittedRoles = this.get('permittedRoles');
 	  const currentRole    = currentUser.get('role');
 	 
-		return permittedRoles.contains(currentRole));
+		return permittedRoles.contains(currentRole);
 	},
 });
