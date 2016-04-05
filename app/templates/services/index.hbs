@@ -1,20 +1,22 @@
-<h1>All our services:</h1>
-<h2>Total number of services: {{model.services.length}}</h2>
-<ul>
-  {{#each model.services as |service|}}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{service.name}}</h3>
-        </div>
-        <div class="panel-body">
-            <p>Description: {{service.description}}</p>
-            <p>Price: {{service.price}}</p>
-    <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
-        </div>
-        {{#link-to 'services.show' service}}<a href>Details</a>{{/link-to}}
-        {{#link-to 'services.show' service}}<a href>Book it!</a>{{/link-to}}
-
-    </div>
-  {{/each}}
-</ul>
+{{#if isServiceProvider}}
 {{#link-to 'services.new' tagName="li"}}<a href>Add new service</a>{{/link-to}}
+{{/if}}
+{{#if isConsumer}}
+    <h1>All our services:</h1>
+    <h2>Total number of services: {{model.services.length}}</h2>
+    <ul>
+      {{#each model.services as |service|}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{service.name}}</h3>
+            </div>
+            <div class="panel-body">
+                <p>Description: {{service.description}}</p>
+                <p>Price: {{service.price}}</p>
+        <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
+            </div>
+            {{#link-to 'services.show' service}}<a href>Book it!</a>{{/link-to}}
+        </div>
+      {{/each}}
+    </ul>
+{{/if}}

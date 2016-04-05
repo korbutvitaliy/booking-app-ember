@@ -1,18 +1,16 @@
 /* jshint ignore:start */
 
 import Ember from 'ember';
+import RoleValidation from '../../mixins/routes/role-validation';
 
 const {
   Route,
   RSVP
 } = Ember;
 
-export default Route.extend({
-  beforeModel() {
-    if (this.get('user.isDealer') === false) {
-      this.transitionTo('services');
-    }
-  },
+export default Route.extend(RoleValidation, {
+  permittedRoles: ['service provider'],
+
 
   model() {
     const parentModel = this.modelFor('services');
