@@ -15,6 +15,8 @@ export default Ember.Mixin.create({
 	attemptTrespasserRedirect () {
 	  const appModel    = this.modelFor('application');
 	  const currentUser = get(appModel, 'currentUser');
+
+
 	  
 	  if (!this.isUserAllowed(currentUser)) {
 		  this.transitionTo('services');
@@ -25,7 +27,7 @@ export default Ember.Mixin.create({
 	isUserAllowed (currentUser) {
 	  const permittedRoles = this.get('permittedRoles');
 	  const currentRole    = currentUser.get('role');
-	 
+			 
 		return permittedRoles.contains(currentRole);
 	},
 });

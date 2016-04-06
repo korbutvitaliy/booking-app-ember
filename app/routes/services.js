@@ -14,7 +14,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
   	const query = {};
   	const appModel    = this.modelFor('application');
 	  let currentUser = get(appModel, 'currentUser');
-	  let currentRole = currentUser.get('role');
+	  let currentRole = currentUser && currentUser.get('role')
 	  if (currentRole === 'service provider') {
 	  	let currentUserId = currentUser.id;
 	  	console.log(currentUserId);
