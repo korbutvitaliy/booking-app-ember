@@ -9,10 +9,10 @@ const {
 
 export default Route.extend({
 
-  model (params) {
-    return RSVP.hash({
-      ...this.modelFor('services'),
-      currentService: this.store.findRecord('service', params.service_id)
-    });
-  }
+  // model (params) {
+  //   return RSVP.hash({
+  //     ...this.modelFor('services'),
+  //     currentService: this.store.findRecord('service', params.service_id)
+  //   });
+  // }
 });
