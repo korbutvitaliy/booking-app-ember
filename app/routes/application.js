@@ -62,6 +62,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
     invalidateSession () {
       this.get('session').invalidate();
+      this.transitionTo('sign-in');
     },
 
     emailSignUp ({email, password, role, deferred}) {

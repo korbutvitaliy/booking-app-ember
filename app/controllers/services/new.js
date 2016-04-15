@@ -4,7 +4,6 @@ export default Ember.Controller.extend({
 
   actions: {
      saveService(newService) {
-      // console.log(this.get('currentUser.content'))
        newService
        .set('user', this.get('currentUser.content'));
        newService

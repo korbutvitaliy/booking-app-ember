@@ -1,5 +1,6 @@
 Logged in as {{currentUser.id}}
 Role: {{currentUser.role}}
+{{#link-to 'bookings' tagName="li"}}<a href>Bookings</a>{{/link-to}}
 {{#if isServiceProvider}}
     {{#link-to 'services.new' tagName="li"}}<a href>Add new service</a>{{/link-to}}
     <h1>All your services:</h1>
