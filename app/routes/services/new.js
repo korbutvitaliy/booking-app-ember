@@ -14,12 +14,10 @@ export default Route.extend(RoleValidation, {
 
   model() {
     const parentModel = this.modelFor('services');
-
+    let user = this.get('currentUser.id');
     return RSVP.hash({
       ...parentModel,
-      newService: this.store.createRecord('service', {
-        user: parentModel.currentUser
-      })
+      newService: this.store.createRecord('service')
     });
   },
 

@@ -10,16 +10,13 @@ const {
 } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
+
   model() {
   	const query = {};
-  	const appModel    = this.modelFor('application');
-	  let currentUser = get(appModel, 'currentUser');
-	  let currentRole = currentUser && currentUser.get('role')
-	  if (currentRole === 'service provider') {
-	  	let currentUserId = currentUser.id;
-	  	console.log(currentUserId);
+	  if (this.get('currentUser.role') === 'service provider') {
+	  	let currentUserId = this.get('currentUser.id');
 	  	let query2 = {orderBy: 'user',
-	  	equalTo: currentUserId};
+	  	equalTo: this.get('currentUser.id')};
 	  	Ember.merge(query, query2);
 	  };
     return RSVP.hash({

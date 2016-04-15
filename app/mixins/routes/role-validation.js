@@ -13,8 +13,7 @@ export default Ember.Mixin.create({
 
   // Returns true on trespasser detection
 	attemptTrespasserRedirect () {
-	  const appModel    = this.modelFor('application');
-	  const currentUser = get(appModel, 'currentUser');
+	  const currentUser = this.get('currentUser')
 
 
 	  
@@ -26,7 +25,7 @@ export default Ember.Mixin.create({
 
 	isUserAllowed (currentUser) {
 	  const permittedRoles = this.get('permittedRoles');
-	  const currentRole    = currentUser.get('role');
+	  const currentRole    = this.get('currentUser.role')
 			 
 		return permittedRoles.contains(currentRole);
 	},

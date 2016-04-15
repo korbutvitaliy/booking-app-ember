@@ -6,6 +6,7 @@ const {
 } = Ember;
 
 export default Controller.extend({
-	isServiceProvider: equal('model.currentUser.role', 'service provider'),
-	isConsumer: equal('model.currentUser.role', 'consumer')
+  currentUser: Ember.inject.service('current-user'),
+	isServiceProvider: equal('currentUser.role', 'service provider'),
+	isConsumer: equal('currentUser.role', 'consumer')
 });

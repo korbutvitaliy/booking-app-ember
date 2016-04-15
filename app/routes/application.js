@@ -12,13 +12,12 @@ export default Route.extend(ApplicationRouteMixin, {
   store:    service(),
   session:  service(),
   firebase: service(),
-
+  beforeModel() {
+    if (this.session.isAuthenticated) {
+      return this._populateCurrentUser();
+    }
+  },
   model () {
-    const id = this.get('session.data.authenticated.uid');
-
-    return RSVP.hash({
-      currentUser: id && this.store.findRecord('user', id)
-    });
   },
 
   authenticateWithPassword ({email, password}) {
@@ -78,6 +77,15 @@ export default Route.extend(ApplicationRouteMixin, {
 
           this.send('authenticateWithPassword', {email, password, role, deferred});
         });
-    }
+    },
+    sessionAuthenticationSucceeded() {
+      this._populateCurrentUser().then(user => this.transitionTo('services'));
+      },
+    },
+
+  _populateCurrentUser() {
+    const id    = this.get('session.data.authenticated.uid');
+    return id && this.store.findRecord('user', id)
+      .then(user => this.get('currentUser').set('content', user) && user);
   }
 });
