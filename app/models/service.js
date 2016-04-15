@@ -3,8 +3,8 @@ import {belongsTo, hasMany} from 'ember-data/relationships';
 import attr                 from 'ember-data/attr';
 
 export default Model.extend({
-  user:        belongsTo('user'),
-  bookings:    hasMany('booking'),
+  user:        belongsTo('user', { inverse: 'services' }),
+  whoBooked:   belongsTo('user', { inverse: 'bookedServices' }),
   
   name:        attr('string'),
   date:        attr('date'),
@@ -14,5 +14,6 @@ export default Model.extend({
   image:       attr('string'),
   booked:      attr('boolean'),
   workFrom:    attr('string'),
-  workTo:      attr('string')
+  workTo:      attr('string'),
+  bookingState:attr('string')
 });

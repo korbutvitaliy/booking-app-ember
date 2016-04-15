@@ -3,10 +3,12 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	actions: {
 		SaveRequest(service) {
-			console.log(this.get('currentUser.id'))
-			// service.set('whoBooked', this.get('user.id'));
-			// service.save()
-			// .then(user => user.save());
+			service.set('whoBooked', this.get('currentUser.content'));
+			service.set('bookingState', 'pending');
+			service.save()
+			.then(()   => service.get('whoBooked'))
+			.then(user => user.save())
+			.then(()   => this.transitionToRoute('services.index'));
 		}
 	}
 });

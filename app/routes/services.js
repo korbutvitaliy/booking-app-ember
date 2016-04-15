@@ -20,7 +20,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
 	  	Ember.merge(query, query2);
 	  };
     return RSVP.hash({
-      ...this.modelFor('application'),
       services: this.store.query('service', query)
     });
   }
