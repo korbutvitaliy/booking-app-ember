@@ -1,51 +1,60 @@
 {{#if isServiceProvider}}
-    {{#link-to 'services.index' tagName="li"}}<a href>Back to List of services</a>{{/link-to}}
+    {{#link-to 'services.index' tagName="li"}}<a href>Back to List of my services</a>{{/link-to}}
     <h2>Pending requests: {{pending.length}}</h2>
-    {{#each pending as |service|}}
+    {{#each pending as |booking|}}
         <div class="panel panel-default">
             <div class="panel-heading">
-                    <h3 class="panel-title">{{service.name}}</h3>
+                    <h3 class="panel-title">{{booking.bookedService.name}}</h3>
             </div>
             <div class="panel-heading">
-                    <h3 class="panel-title">{{service.whoBooked.id}}</h3>
+                    <h3 class="panel-title">{{booking.whoBooked.id}}</h3>
             </div>
             <div class="form-gorup">
-                <button type="submit" class="btn btn-success "   {{action 'accept' service}}>Accept a booking</button>
-                <button type="submit" class="btn btn-danger" {{action 'reject' service}}>Reject</button>
+                <button type="submit" class="btn btn-success "   {{action 'accept' booking}}>Accept booking</button>
+                <button type="submit" class="btn btn-danger" {{action 'reject' booking}}>Reject</button>
             </div>
         </div>
     {{/each}}
     <h2>Accepted requests: {{accepted.length}}</h2>
-    {{#each accepted as |service|}}
+    {{#each accepted as |booking|}}
         <div class="panel panel-default">
             <div class="panel-heading">
-                    <h3 class="panel-title">{{service.name}}</h3>
+                    <h3 class="panel-title">{{booking.bookedService.name}}</h3>
             </div>
             <div class="panel-heading">
-                    <h3 class="panel-title">{{service.whoBooked.id}}</h3>
+                    <h3 class="panel-title">{{booking.whoBooked.id}}</h3>
             </div>
         </div>
         <div class="form-gorup">
-               {{!--  <button type="submit" class="btn btn-success "   {{action 'accept' service}}>Accept a booking</button> --}}
-                <button type="submit" class="btn btn-danger" {{action 'reject' service}}>Reject</button>
+               {{!--  <button type="submit" class="btn btn-success "   {{action 'accept' booking}}>Accept a booking</button> --}}
+                <button type="submit" class="btn btn-danger" {{action 'reject' booking}}>Reject</button>
             </div>
     {{/each}}
 {{/if}}
 
 {{#if isConsumer}}
+{{#link-to 'services.index' tagName="li"}}<a href>Back to List of services</a>{{/link-to}}
     <h2>Pending requests: {{pending.length}}</h2>
-    {{#each pending as |service|}}
+    {{#each pending as |booking|}}
         <div class="panel panel-default">
             <div class="panel-heading">
-                    <h3 class="panel-title">{{service.name}}</h3>
+                    <h3 class="panel-title">{{booking.bookedService.name}}</h3>
             </div>
         </div>
     {{/each}}
     <h2>Accepted requests: {{accepted.length}}</h2>
-    {{#each accepted as |service|}}
+    {{#each accepted as |booking|}}
         <div class="panel panel-default">
             <div class="panel-heading">
-                    <h3 class="panel-title">{{service.name}}</h3>
+                    <h3 class="panel-title">{{booking.bookedService.name}}</h3>
+            </div>
+        </div>
+    {{/each}}
+    <h2>Rejected requests: {{rejected.length}}</h2>
+    {{#each rejected as |booking|}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                    <h3 class="panel-title">{{booking.bookedService.name}}</h3>
             </div>
         </div>
     {{/each}}

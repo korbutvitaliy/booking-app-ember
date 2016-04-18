@@ -10,25 +10,32 @@ export default Controller.extend({
 	isConsumer: equal('currentUser.role', 'consumer'),
 
 	actions: {
-		accept(service) {
-			service.set('bookingState', 'confirmed');
-			service.save()
-			this.get('target.router').refresh()
-			// this.get('bookings').refresh()
+		accept(booking) {
+			let bookings = this.store.query('booking', {orderBy: 'bookedService',
+	  	equalTo: booking.get('bookedService.id')
+	  	}).then(function(bookings) {
+	  		bookings.setEach('bookingState','rejected');
+				booking.set('bookingState', 'confirmed');		
+				bookings.save();
+	  	});
+	  	this.get('target.router').refresh();
+		 	let service = this.store.findRecord('service', booking.get('bookedService.id')).then(function(service) {
+		 		service.toggleProperty('booked');
+		 		service.save();
+		 	});
+		 	
+	  	
+			
+			// need to reject other requests
 		},
 
-		reject(service) {
-			// let id = service.get('id');
-			// let user = service.get('whoBooked');
-			// let ololo = user.get('bookedServices');
-			// ololo.set(id, false);
-			// user.save();
-
-			service.set('bookingState', '');
-			service.set('whoBooked', '');
-			service.save()
-			// .then(user => this.toggleProperty('user.bookedServices.id')
-			// 	.save()),
+		reject(booking) {
+			booking.set('bookingState', 'rejected');
+			booking.save()
+			let service = this.store.findRecord('service', booking.get('bookedService.id')).then(function(service) {
+		 		service.set('booked', false);
+		 		service.save();
+		 	});
 			this.get('target.router').refresh()
 		}
 	}
