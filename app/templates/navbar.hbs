@@ -1,0 +1,38 @@
+<nav class='navbar navbar-inverse'>
+  <div class='container-fluid'>
+    <div class='navbar-header'>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to 'services' class="navbar-brand"}}Booking-App{{/link-to}}
+    </div>  
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav">
+        {{#link-to 'services' tagName="li"}}<a href="">Services</a>{{/link-to}}
+        {{#link-to 'bookings' tagName="li"}}<a href="">Bookings</a>{{/link-to}}
+        {{#link-to 'contacts' tagName="li"}}<a href="">Contacts</a>{{/link-to}}
+        {{#link-to 'notifications' tagName="li"}}<a href="">Notifications</a>{{/link-to}}
+
+      </ul>
+    
+      
+    <ul class='nav navbar-nav navbar-right'>
+
+    {{#if session.isAuthenticated}}
+      <button
+        class='btn btn-default navbar-btn'
+        {{action (route-action 'invalidateSession')}}
+      >
+        {{fa-icon 'sign-out'}} Sign Out
+      </button>
+    {{else}}
+      {{#link-to 'sign-in' class='btn btn-primary navbar-btn'}}Sign in{{/link-to}}
+      {{#link-to 'sign-up' class='btn btn-success navbar-btn'}}Sign up{{/link-to}}
+    {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

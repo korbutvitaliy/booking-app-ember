@@ -11,30 +11,46 @@ export default Controller.extend({
 
 	actions: {
 		accept(booking) {
-			let bookings = this.store.query('booking', {orderBy: 'bookedService',
-	  	equalTo: booking.get('bookedService.id')
-	  	}).then(function(bookings) {
-	  		bookings.setEach('bookingState','rejected');
-				booking.set('bookingState', 'confirmed');		
-				bookings.save();
-	  	});
-	  	this.get('target.router').refresh();
-		 	let service = this.store.findRecord('service', booking.get('bookedService.id')).then(function(service) {
-		 		service.toggleProperty('booked');
-		 		service.save();
-		 	});
-		 	
-	  	
-			
-			// need to reject other requests
+		  const bookings =
+		    this
+		      .store
+		      .query('booking', {
+		        orderBy: 'bookedService',
+		        equalTo: booking.get('bookedService.id')
+		      })
+		      .then(function(bookings) {
+		        bookings.setEach('bookingState','rejected');
+		        booking.set('bookingState', 'confirmed');        
+		        return bookings.save();
+		      });
+
+		  const service =
+		    this
+		      .store
+		      .findRecord('service', booking.get('bookedService.id'))
+		      .then(function(service) {
+		        service.toggleProperty('booked');
+		        return service.save();
+		     });
+
+		  Ember
+		    .RSVP
+		    .all([bookings, service])
+		    .then(() => {
+		      this.get('target.router').refresh();
+		    });
 		},
 
 		reject(booking) {
 			booking.set('bookingState', 'rejected');
 			booking.save()
-			let service = this.store.findRecord('service', booking.get('bookedService.id')).then(function(service) {
-		 		service.set('booked', false);
-		 		service.save();
+			const service = 
+				this
+				.store
+				.findRecord('service', booking.get('bookedService.id'))
+				.then(function(service) {
+		 			service.set('booked', false);
+		 			return service.save();
 		 	});
 			this.get('target.router').refresh()
 		}
