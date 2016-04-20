@@ -22,8 +22,16 @@ export default Ember.Controller.extend({
 
 			service.save()
 			.then(()   => this.get('currentUser.content'))
-			.then(user => user.save())
-			.then(()   => this.transitionToRoute('services.index'));
+			.then(user => user.save());
+			let notification =
+			this
+				.store
+				.createRecord('notification', {
+					toWhom: service.get('user'),
+					subject: "New request for ",
+					service: service.get('name')
+				});
+			notification.save();
 		}
 	}
 });

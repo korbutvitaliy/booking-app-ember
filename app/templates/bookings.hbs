@@ -1,5 +1,4 @@
 {{#if isServiceProvider}}
-    {{#link-to 'services.index' tagName="li"}}<a href>Back to List of my services</a>{{/link-to}}
     <h2>Pending requests: {{pending.length}}</h2>
     {{#each pending as |booking|}}
         <div class="panel panel-default">
@@ -23,17 +22,14 @@
             </div>
             <div class="panel-heading">
                     <h3 class="panel-title">{{booking.whoBooked.id}}</h3>
+                    <button type="submit" class="btn btn-danger" {{action 'reject' booking}}>I changed my mind</button>
+
             </div>
         </div>
-        <div class="form-gorup">
-               {{!--  <button type="submit" class="btn btn-success "   {{action 'accept' booking}}>Accept a booking</button> --}}
-                <button type="submit" class="btn btn-danger" {{action 'reject' booking}}>Reject</button>
-            </div>
     {{/each}}
 {{/if}}
 
 {{#if isConsumer}}
-{{#link-to 'services.index' tagName="li"}}<a href>Back to List of services</a>{{/link-to}}
     <h2>Pending requests: {{pending.length}}</h2>
     {{#each pending as |booking|}}
         <div class="panel panel-default">

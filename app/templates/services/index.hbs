@@ -1,6 +1,3 @@
-Logged in as {{currentUser.id}}
-Role: {{currentUser.role}}
-{{#link-to 'bookings' tagName="li"}}<a href>Bookings</a>{{/link-to}}
 {{#if isServiceProvider}}
     {{#link-to 'services.new' tagName="li"}}<a href>Add new service</a>{{/link-to}}
     <h1>All your services:</h1>
@@ -14,6 +11,7 @@ Role: {{currentUser.role}}
                 <div class="panel-body">
                     <p>Description: {{service.description}}</p>
                     <p>Price: {{service.price}}</p>
+                    <p>Price: {{service.startAt}}</p>
             <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
                 </div>
             </div>

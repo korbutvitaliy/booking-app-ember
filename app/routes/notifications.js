@@ -1,4 +1,18 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+const {
+  Route,
+  RSVP,
+  get
+} = Ember;
+
+export default Route.extend(AuthenticatedRouteMixin, {
+
+	model() {
+    return this.store.query('notification', {
+      orderBy: 'toWhom',
+	  	equalTo: this.get('currentUser.id')
+	  })
+  }
 });

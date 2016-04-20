@@ -7,10 +7,13 @@
 </div>
 
 <div class="form-horizontal form-group form-group-lg row">
-
+  {{input type='text' id='name' class='form-control' value=name placeholder='name'}}
+  <br>
   {{input type='email' id='email' class='form-control' value=email placeholder='email'}}
   <br>
   {{input type='password' class='form-control' value=password placeholder='password'}}
+  <br>
+  {{input type='text' id='phone' class='form-control' value=phone placeholder='+380 00 000-00-00'}}
   <br>
   {{#x-select value=role class="form-control"}}
     {{#each commonUserRoles as |role|}}

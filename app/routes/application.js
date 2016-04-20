@@ -30,7 +30,7 @@ export default Route.extend(ApplicationRouteMixin, {
       );
   },
 
-  obtainUser({email, role}) {
+  obtainUser({name, email, phone, role}) {
     const id    = this.get('session.data.authenticated.uid');
     const store = this.get('store');
 
@@ -39,7 +39,7 @@ export default Route.extend(ApplicationRouteMixin, {
       .findRecord('user', id)
       .catch(() => {
         return store
-          .createRecord('user', {id, email, role})
+          .createRecord('user', {id, name, email, phone, role})
           .save();
       })
       .then(user => {
@@ -49,10 +49,10 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   actions: {
-    authenticateWithPassword ({email, password, role, deferred}) {
+    authenticateWithPassword ({name, email, password, phone, role, deferred}) {
       this
         .authenticateWithPassword({email, password})
-        .then(() => this.obtainUser({email, role}))
+        .then(() => this.obtainUser({name, email, phone, role}))
         .then(deferred.resolve)
         .catch(error => {
           console.log('application route authenticateWithPassword error:', error);
@@ -64,7 +64,7 @@ export default Route.extend(ApplicationRouteMixin, {
       this.get('session').invalidate();
     },
 
-    emailSignUp ({email, password, role, deferred}) {
+    emailSignUp ({name, email, password, phone, role, deferred}) {
       this
         .get('firebase')
         .createUser({ email, password },
@@ -75,7 +75,7 @@ export default Route.extend(ApplicationRouteMixin, {
             return;
           }
 
-          this.send('authenticateWithPassword', {email, password, role, deferred});
+          this.send('authenticateWithPassword', {name, email, password, phone, role, deferred});
         });
     },
     sessionAuthenticationSucceeded() {

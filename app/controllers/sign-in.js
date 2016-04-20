@@ -1,6 +1,14 @@
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
 
+Ember.TextField.reopen({
+  triggerEvents: function () {
+    Ember.run.next(this, function () {
+      this.$().trigger("change");
+    });
+  }.on("didInsertElement")
+});
+
 const {
   computed: { and, gte, match },
   Controller,
