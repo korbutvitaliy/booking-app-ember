@@ -6,18 +6,18 @@
     <p>{{errorMessage}}</p>
   </div>
   <div class="form-horizontal form-group form-group-lg row">
+   <div class="col-sm-3">
     {{input type='email' id='email' class='form-control' value=email placeholder='email'}}
     <br>
-    {{input type='password' class='form-control' value=password placeholder='password'}}    
-  </div>
-  
-  <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+    {{input type='password' class='form-control' value=password placeholder='password'}}   
+    <br>
     <button
       class='btn btn-primary btn-lg btn-block'
       {{action (perform authenticateWithPassword)}}
       disabled={{or authenticateWithPassword.isRunning (not isValid)}}
     >
       {{fa-icon 'sign-in'}} {{if authenticateWithPassword.isRunning "Signing in..." "Sign In"}}
-    </button>
+    </button> 
+    </div>
   </div>
 </div>

@@ -31,7 +31,10 @@ export default Ember.Controller.extend({
 					subject: "New request for ",
 					service: service.get('name')
 				});
-			notification.save();
+			notification.save()
+			.then(() => this.notifications.success('Request has been sent', {
+				autoClear: true
+			}));
 		}
 	}
 });

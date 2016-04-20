@@ -7,6 +7,7 @@
 </div>
 
 <div class="form-horizontal form-group form-group-lg row">
+ <div class="col-sm-3">
   {{input type='text' id='name' class='form-control' value=name placeholder='name'}}
   <br>
   {{input type='email' id='email' class='form-control' value=email placeholder='email'}}
@@ -20,13 +21,13 @@
       {{#x-option value=role}}I'm a {{role}}{{/x-option}}
     {{/each}}
   {{/x-select}}
-</div>
-<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
-  <button
+  <br>
+   <button
     class='btn btn-success btn-lg btn-block'
     {{action (perform emailSignup)}}
     disabled={{or emailSignup.isRunning (not isValid)}}
   >
     {{fa-icon 'user-plus'}} {{if emailSignup.isRunning 'Signing up...' 'Sign Up'}}
 </button>
+  </div>
 </div>

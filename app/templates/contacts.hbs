@@ -1,21 +1,40 @@
 {{#if isServiceProvider}}
+<table>
+  <tr>
+    <th>Service Name</th>
+    <th>Name(id for now)</th>
+    <th>Day</th>
+    <th>Time</th>
+    <th>Phone</th>
+  </tr>
 	{{#each accepted as |booking|}}
-		<div class="panel panel-default">
-    	<div class="panel-heading">
-      	<h3 class="panel-title">{{booking.bookedService.name}}</h3>
-      </div>
-      <div class="panel-heading">
-        <h3 class="panel-title">{{booking.whoBooked.id}}</h3>
-    	</div>
-    </div>
+    <tr>
+      <td>{{booking.bookedService.name}}</td>
+      <td>{{booking.whoBooked.id}}</td>
+      <td>{{booking.bookedService.date}}</td>
+      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{booking.whoBooked.phone}}</td>
+    </tr>
 	{{/each}}
+  </table>
 {{/if}}
 {{#if isConsumer}}
+<table>
+  <tr>
+    <th>Service Name</th>
+    <th>Name(id for now)</th>
+    <th>Day</th>
+    <th>Time</th>
+    <th>Phone</th>
+  </tr>
 	{{#each accepted as |booking|}}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-          <h3 class="panel-title">{{booking.bookedService.name}}</h3>
-      </div>
-    </div>
+    <tr>
+      <td>{{booking.bookedService.name}}</td>
+      <td>{{booking.bookedService.user.id}}</td>
+      <td>{{booking.bookedService.date}}</td>
+      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{booking.whoBooked.phone}}</td>
+    </tr>
 	{{/each}}
+  </table>
 {{/if}}
