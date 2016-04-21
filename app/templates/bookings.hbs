@@ -3,14 +3,14 @@
   <table>
     <tr>
       <th>Service Name</th>
-      <th>Name(id for now)</th>
+      <th>Name</th>
       <th>Accept</th>
       <th>Reject</th>
     </tr>
     {{#each pending as |booking|}}
       <tr>
         <td>{{booking.bookedService.name}}</td>
-        <td>{{booking.whoBooked.id}}</td>
+        <td>{{booking.whoBooked.name}}</td>
         <td><button type="submit" class="btn btn-success "   {{action 'accept' booking}}>Accept booking</button></td>
         <td><button type="submit" class="btn btn-danger" {{action 'reject' booking}}>Reject</button></td>
       </tr>
@@ -21,7 +21,7 @@
   <table>
     <tr>  
       <th>Service Name</th>
-      <th>Name(id for now)</th>
+      <th>Name</th>
       <th>Day</th>
       <th>Time</th>
       <th>Reject</th>
@@ -29,9 +29,9 @@
     {{#each accepted as |booking|}}
     <tr>
       <td>{{booking.bookedService.name}}</td>
-      <td>{{booking.whoBooked.id}}</td>
-      <td>{{booking.bookedService.date}}</td>
-      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{booking.whoBooked.name}}</td>
+      <td>{{booking.date}}</td>
+      <td>{{booking.startAt}}</td>
        <td><button type="submit" class="btn btn-sm btn-danger" {{action 'reject' booking}}>I changed my mind</button></td>
     </tr>
     {{/each}}
@@ -49,8 +49,8 @@
     {{#each pending as |booking|}}
     <tr>
       <td>{{booking.bookedService.name}}</td>
-      <td>{{booking.bookedService.date}}</td>
-      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{booking.date}}</td>
+      <td>{{booking.startAt}}</td>
     </tr>
     {{/each}}
   </table>
@@ -64,8 +64,8 @@
     {{#each accepted as |booking|}}
     <tr>
       <td>{{booking.bookedService.name}}</td>
-      <td>{{booking.bookedService.date}}</td>
-      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{booking.date}}</td>
+      <td>{{booking.startAt}}</td>
     </tr>
     {{/each}}
   </table>

@@ -1,5 +1,13 @@
-<h2>Subject</h2>
-{{#each model as |notification|}}
-	{{notification.subject}}{{notification.service}}
-	<br>
-{{/each}}
+<h2>Notifications</h2>
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Hide notification</th>
+  </tr>
+	{{#each model as |notification|}}
+	<tr>
+    <td>{{notification.subject}}{{notification.service}}</td>
+    <td><button type="submit" class="btn btn-sm btn-danger" {{action 'hide' notification}}>Hide</button></td>  
+  </tr>
+	{{/each}}
+</table>

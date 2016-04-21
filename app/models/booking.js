@@ -7,5 +7,7 @@ export default Model.extend({
   bookedService:   	belongsTo('service'),
   whoBooked:      	belongsTo('user'),
 
-  bookingState: 		attr('string')
+  bookingState: 		attr('string'),
+  date: 			 attr(),
+  startAt: 		 attr(),
 });

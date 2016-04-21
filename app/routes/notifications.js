@@ -14,5 +14,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
       orderBy: 'toWhom',
 	  	equalTo: this.get('currentUser.id')
 	  })
+  },
+  actions: {
+    hide(notification) {
+      notification.set('hidden', true);
+      notification.save();
+    }
   }
 });

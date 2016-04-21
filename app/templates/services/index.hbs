@@ -11,7 +11,9 @@
                 <div class="panel-body">
                     <p>Description: {{service.description}}</p>
                     <p>Price: {{service.price}}</p>
-                    <p>Price: {{service.startAt}}</p>
+                    <p>Day: {{service.date}}</p>
+                    <p>From: {{service.startAt}}</p>
+                    <p>To: {{service.finishAt}}</p>
             <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
                 </div>
             </div>
@@ -29,7 +31,10 @@
             </div>
             <div class="panel-body">
                 <p>Description: {{service.description}}</p>
-                <p>Price: {{service.price}}</p>
+                    <p>Price: {{service.price}}</p>
+                    <p>Day: {{service.date}}</p>
+                    <p>From: {{service.startAt}}</p>
+                    <p>To: {{service.finishAt}}</p>
         <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
             </div>
             {{#link-to 'services.show' service}}<a href>Book it!</a>{{/link-to}}

@@ -1,8 +1,4 @@
-Logged in as {{currentUser.id}}
-{{currentUser.content.role}}
 {{notification-container notifications=notifications position="top"}}
- <h2>Total number of bookings this service: {{model.bookings.length}}</h2>
- <h2>Total number of your bookings this service: {{isAlreadySent.length}}</h2>
 
 {{#link-to 'services.index' tagName="li"}}<a href>Back to all services</a>{{/link-to}}
 <div class="panel panel-default">

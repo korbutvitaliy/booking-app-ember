@@ -16,8 +16,13 @@ export default Ember.Controller.extend({
 						serviceProvider: service.get('user.id'),
 						bookedService: service,
 						whoBooked: this.get('currentUser.content'),
-						bookingState: 'pending'
+						bookingState: 'pending',
+						date: service.get('date'),
+						startAt: service.get('startAt')
 					});
+					console.log(this.get('service.date'));
+					console.log(this.get('service.startAt'));
+
 				booking.save();
 
 			service.save()
@@ -29,7 +34,7 @@ export default Ember.Controller.extend({
 				.createRecord('notification', {
 					toWhom: service.get('user'),
 					subject: "New request for ",
-					service: service.get('name')
+					service: service.get('name'),
 				});
 			notification.save()
 			.then(() => this.notifications.success('Request has been sent', {
