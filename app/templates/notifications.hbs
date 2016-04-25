@@ -5,9 +5,11 @@
     <th>Hide notification</th>
   </tr>
 	{{#each model as |notification|}}
-	<tr>
-    <td>{{notification.subject}}{{notification.service}}</td>
-    <td><button type="submit" class="btn btn-sm btn-danger" {{action 'hide' notification}}>Hide</button></td>  
-  </tr>
+    {{#unless notification.hidden}}
+      <tr>
+        <td>{{notification.subject}}{{notification.service}}</td>
+        <td><button type="submit" class="btn btn-sm btn-danger" {{action 'hide' notification}}>Hide</button></td>  
+    </tr>
+    {{/unless}}
 	{{/each}}
 </table>

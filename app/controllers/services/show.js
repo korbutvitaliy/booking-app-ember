@@ -5,41 +5,98 @@ export default Ember.Controller.extend({
   	return booking.get('whoBooked.id') === this.get('currentUser.id')
   	}
   ),
-
+  filteredConv: Ember.computed.filter('model.conversation1', function(conversation) { 
+  return conversation.get('serviceProvider') === this.get('model.service.user.id')
+  }
+  ),
 	
 	actions: {
-		SaveRequest(service) {
+		sendMessage(model){
+			if (Ember.isEmpty(model.newMessage)) {
+
+			} else {
+
+				if (Ember.isEmpty(this.get('filteredConv'))) {
+				let message =
+				this
+					.store
+					.createRecord('message',{
+  					sender_name: 		 this.get('currentUser.name'),
+						body: 					 model.newMessage,
+						timestamp: new Date().getTime()
+					});
+
+					let conversation =
+				this
+					.store
+					.createRecord('conversation', {
+						customer: 				 this.get('currentUser.id'),
+						serviceProvider: 	 model.service.get('user.id'),
+						customer_name:   	 this.get('currentUser.name'),
+						provider_name:   	 model.service.get('user.name'),
+						last_message: 		 model.newMessage,
+						last_update: 			 message.get('timestamp'),
+						last_message_name: this.get('currentUser.name')
+					});
+					conversation.get('messages').addObject(message);
+				message.save()
+				.then(() => conversation.save())
+				.then(() => this.set('model.newMessage', ''));
+				} else {
+						let message =
+				this
+					.store
+					.createRecord('message',{
+  					sender_name: 		 this.get('currentUser.name'),
+						body: 					 model.newMessage,
+						timestamp: new Date().getTime()
+					});
+					let filteredConv = this.get('filteredConv');
+					let conversation = filteredConv.get('firstObject');
+					conversation.setProperties({
+						last_message: model.newMessage,
+						last_update:  message.get('timestamp'),
+						last_message_name: this.get('currentUser.name')
+					});
+					conversation.get('messages').addObject(message);
+				message.save()
+				.then(() => conversation.save())
+				.then(() => this.set('model.newMessage', ''));
+				}
+			}
+		},
+		SaveRequest(model) {
 				let booking = 
 				this
 					.store
 					.createRecord('booking', {
-						serviceProvider: service.get('user.id'),
-						bookedService: service,
+						serviceProvider: model.service.get('user.id'),
+						bookedService: model.service,
 						whoBooked: this.get('currentUser.content'),
 						bookingState: 'pending',
-						date: service.get('date'),
-						startAt: service.get('startAt')
+						date: model.service.get('date'),
+						startAt: model.service.get('startAt')
 					});
-					console.log(this.get('service.date'));
-					console.log(this.get('service.startAt'));
+
 
 				booking.save();
 
-			service.save()
+			model.service.save()
 			.then(()   => this.get('currentUser.content'))
 			.then(user => user.save());
 			let notification =
 			this
 				.store
 				.createRecord('notification', {
-					toWhom: service.get('user'),
+					toWhom: model.service.get('user'),
 					subject: "New request for ",
-					service: service.get('name'),
+					service: model.service.get('name'),
 				});
 			notification.save()
 			.then(() => this.notifications.success('Request has been sent', {
 				autoClear: true
 			}));
+			this.send('sendMessage',model);
 		}
 	}
 });

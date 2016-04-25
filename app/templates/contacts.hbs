@@ -2,7 +2,7 @@
 <table>
   <tr>
     <th>Service Name</th>
-    <th>Name(id for now)</th>
+    <th>Name</th>
     <th>Day</th>
     <th>Time</th>
     <th>Phone</th>
@@ -10,7 +10,7 @@
 	{{#each accepted as |booking|}}
     <tr>
       <td>{{booking.bookedService.name}}</td>
-      <td>{{booking.whoBooked.id}}</td>
+      <td>{{booking.whoBooked.name}}</td>
       <td>{{booking.bookedService.date}}</td>
       <td>{{booking.bookedService.startAt}}</td>
       <td>{{booking.whoBooked.phone}}</td>
@@ -22,7 +22,7 @@
 <table>
   <tr>
     <th>Service Name</th>
-    <th>Name(id for now)</th>
+    <th>Name</th>
     <th>Day</th>
     <th>Time</th>
     <th>Phone</th>
@@ -30,7 +30,7 @@
 	{{#each accepted as |booking|}}
     <tr>
       <td>{{booking.bookedService.name}}</td>
-      <td>{{booking.bookedService.user.id}}</td>
+      <td>{{booking.bookedService.user.name}}</td>
       <td>{{booking.bookedService.date}}</td>
       <td>{{booking.bookedService.startAt}}</td>
       <td>{{booking.whoBooked.phone}}</td>

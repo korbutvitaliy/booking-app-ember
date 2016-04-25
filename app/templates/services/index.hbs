@@ -1,45 +1,56 @@
 {{#if isServiceProvider}}
-    {{#link-to 'services.new' tagName="li"}}<a href>Add new service</a>{{/link-to}}
-    <h1>All your services:</h1>
-    <h2>Total number of your services: {{model.services.length}}</h2>
-        <ul>
-          {{#each model.services as |service|}}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{service.name}}</h3>
-                </div>
-                <div class="panel-body">
-                    <p>Description: {{service.description}}</p>
-                    <p>Price: {{service.price}}</p>
-                    <p>Day: {{service.date}}</p>
-                    <p>From: {{service.startAt}}</p>
-                    <p>To: {{service.finishAt}}</p>
-            <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
-                </div>
-            </div>
-          {{/each}}
-        </ul>
+  {{#link-to 'services.new' tagName="li"}}<a href>Add new service</a>{{/link-to}}
+  <h1>All your services:</h1>
+  <h2>Total number of your services: {{model.services.length}}</h2>
+  <table>
+    <tr>
+      <th>Picture</th>
+      <th>Service Name</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Price</th>
+    </tr>
+    {{#each model.services as |service|}}
+      <tr>
+        <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
+        <td>{{service.name}}</td>
+        <td>{{service.description}}</td>
+        <td>{{service.date}}</td>
+        <td>{{service.startAt}}</td>
+        <td>{{service.finishAt}}</td>
+        <td>{{service.price}}</td>
+      </tr>
+    {{/each}}
+  </table>
 {{/if}}
 {{#if isConsumer}}
-    <h1>All our services:</h1>
-    <ul>
-      {{#each model.services as |service|}}
-        {{#unless service.booked}}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{service.name}}</h3>
-            </div>
-            <div class="panel-body">
-                <p>Description: {{service.description}}</p>
-                    <p>Price: {{service.price}}</p>
-                    <p>Day: {{service.date}}</p>
-                    <p>From: {{service.startAt}}</p>
-                    <p>To: {{service.finishAt}}</p>
-        <img src="{{service.image}}" alt="Smiley face" height="473" width="356">
-            </div>
-            {{#link-to 'services.show' service}}<a href>Book it!</a>{{/link-to}}
-        </div>
-        {{/unless}}
-      {{/each}}
-    </ul>
+  <h1>All our services:</h1>
+  <table>
+    <tr>
+      <th>Picture</th>
+      <th>Service Name</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    {{#each model.services as |service|}}
+      {{#unless service.booked}}
+        <tr>
+          <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
+          <td>{{service.name}}</td>
+          <td>{{service.description}}</td>
+          <td>{{service.date}}</td>
+          <td>{{service.startAt}}</td>
+          <td>{{service.finishAt}}</td>
+          <td>{{service.price}}</td>
+          <td>{{#link-to 'services.show' service.id}}<a href>Read more</a>{{/link-to}}</td>
+        </tr>
+      {{/unless}}
+    {{/each}}
+  </table>
 {{/if}}

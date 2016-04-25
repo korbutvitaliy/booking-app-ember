@@ -14,13 +14,10 @@
         {{#link-to 'services' tagName="li"}}<a href="">Services</a>{{/link-to}}
         {{#link-to 'bookings' tagName="li"}}<a href="">Bookings</a>{{/link-to}}
         {{#link-to 'contacts' tagName="li"}}<a href="">Contacts</a>{{/link-to}}
-        {{#link-to 'notifications' tagName="li"}}<a href="">Notifications</a>{{/link-to}}
-
+        {{#link-to 'messages' tagName="li"}}<a href="">Messages</a>{{/link-to}}
       </ul>
-    
-      
     <ul class='nav navbar-nav navbar-right'>
-
+      {{#link-to 'notifications' tagName="li"}}<a href="">Notifications</a>{{/link-to}}
     {{#if session.isAuthenticated}}
       <button
         class='btn btn-default navbar-btn'

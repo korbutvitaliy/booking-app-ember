@@ -8,23 +8,18 @@ const {
 } = Ember;
 
 export default Route.extend({
-  model(params){
-    return this.store.find('service', params.service_id);
-  }
-
-  // model(params) {
-		// return RSVP.hash({
-  //     // service:this.store.find('service', params.service_id),
-  //     filteredBookings:this.store.query('booking', {
-  //       orderBy: 'bookedService',
-  //       equalTo: params.service_id
-  //     })
-  //   });
-  // },
-  // setupController(controller, model) {
-  // 	controller.setProperties({
-  // 		model:    model,
-  // 		filteredBookings:  model.bookings.filterBy('whoBooked',  this.get('currentUser.id')),
-  // 	})
-  // }
+  model(params) {
+  let store = this.store;
+    return RSVP.hash({
+      service:        store.find('service', params.service_id),
+      conversation1:  store.query('conversation', {
+        orderBy: 'customer',
+        equalTo: this.get('currentUser.id')
+      }),
+      bookings:       store.query('booking', {
+        orderBy: 'bookedService',
+        equalTo: params.service_id,
+        })
+    })
+  },
 });

@@ -15,6 +15,9 @@ Router.map(function() {
   this.route('bookings');
   this.route('notifications');
   this.route('contacts');
+  this.route('messages', function() {
+    this.route('show', { path: ':conversation_id' });
+  });
 });
 
 
