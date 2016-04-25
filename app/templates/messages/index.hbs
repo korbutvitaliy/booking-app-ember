@@ -6,12 +6,12 @@
 			<th>Message</th>
 			<th>Time sent</th>
 		</tr>
-		{{#each model as |conversation|}}
+		{{#each sortedList as |conversation|}}
 			{{#link-to 'messages.show' conversation.id tagName="tr"}}
 				<th>{{conversation.customer_name}}</th>
 				<th>{{conversation.last_message_name}}</th>
 			 	<th>{{conversation.last_message}}</th>
-			 	<th>{{conversation.last_update}}</th>		
+			 	<th>{{format-date conversation.last_update}}</th>		
 			{{/link-to}} 	
 		{{/each}}
 	</table>
@@ -24,12 +24,12 @@
 			<th>Message</th>
 			<th>Time sent</th>
 		</tr>
-		{{#each model as |conversation|}}
+		{{#each sortedList as |conversation|}}
 			{{#link-to 'messages.show' conversation.id tagName="tr"}}
 				<th>{{conversation.provider_name}}</th>
 				<th>{{conversation.last_message_name}}</th>
 			 	<th>{{conversation.last_message}}</th>
-			 	<th>{{conversation.last_update}}</th>		
+			 	<th>{{format-date conversation.last_update}}</th>		
 			{{/link-to}} 	
 		{{/each}}
 	</table>
