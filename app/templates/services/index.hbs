@@ -10,9 +10,9 @@
       <th>Date</th>
       <th>From</th>
       <th>To</th>
-      <th>Price</th>
+      <th{{action "setSort"}}>Price</th>
     </tr>
-    {{#each model.services as |service|}}
+    {{#each sortedList as |service|}}
       <tr>
         <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
         <td>{{service.name}}</td>
@@ -35,10 +35,10 @@
       <th>Date</th>
       <th>From</th>
       <th>To</th>
-      <th>Price</th>
+      <th{{action "setSort"}}>Price</th>
       <th></th>
     </tr>
-    {{#each model.services as |service|}}
+    {{#each sortedList as |service|}}
       {{#unless service.booked}}
         <tr>
           <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>

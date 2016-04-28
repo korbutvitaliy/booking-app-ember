@@ -6,8 +6,8 @@ export default Ember.Controller.extend({
   	}
   ),
   filteredConv: Ember.computed.filter('model.conversation1', function(conversation) { 
-  return conversation.get('serviceProvider') === this.get('model.service.user.id')
-  }
+  	return conversation.get('serviceProvider') === this.get('model.service.user.id')
+  	}
   ),
 	
 	actions: {

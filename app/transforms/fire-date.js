@@ -7,7 +7,7 @@ export default DS.Transform.extend({
 
   serialize(date) {
   	if (date instanceof Date) {
-      return moment(date).format('l');
+      return moment(date).format('ll');
     } else {
       return null;
     }

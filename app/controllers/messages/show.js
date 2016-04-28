@@ -1,10 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	message_params: 0,
   isAlreadySent: Ember.computed.filter('model.bookings', function(booking) { 
   	return booking.get('whoBooked.id') === this.get('currentUser.id')
   	}
   ),
+  lastMessages: Ember.computed(function() { 
+  	let params = this.get('message_params');
+  	let arr = this.get('model.messages').toArray();
+  	return arr.slice(Math.max(arr.length - 10 - params, 0))
+  }).property('model.messages.[]','message_params'),
 	
 	actions: {
 		sendMessage(model){
@@ -32,6 +38,9 @@ export default Ember.Controller.extend({
 				.then(() => conversation.save())
 				.then(() => this.set('model.newMessage', ''));
 			}
+		},
+		showMore() {
+			this.incrementProperty('message_params', 5);
 		}
 	}
 });
