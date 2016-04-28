@@ -17,7 +17,7 @@
         <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
         <td>{{service.name}}</td>
         <td>{{service.description}}</td>
-        <td>{{service.date}}</td>
+        <td>{{format-date2 service.date}}</td>
         <td>{{service.startAt}}</td>
         <td>{{service.finishAt}}</td>
         <td>{{service.price}}</td>
@@ -27,6 +27,19 @@
 {{/if}}
 {{#if isConsumer}}
   <h1>All our services:</h1>
+  <h3>You can filter services here</h3>
+  <div class="form-group">
+    <div class="col-sm-4" >
+      <label class="col-sm-2 control-label">From date</label>
+      {{pick-a-date date=(readonly date1) on-selected=(action (mut date1)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}}
+    </div>
+    <div class="col-sm-4" >
+      <label class="col-sm-2 control-label">To date</label>
+      {{pick-a-date date=(readonly date2) on-selected=(action (mut date2)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}} 
+    </div>
+    <button type="submit" class="btn btn-default" {{action "filter"}}>Filter</button>
+    <button type="submit" class="btn btn-default" {{action "clear"}}>Clear</button>
+  </div>
   <table>
     <tr>
       <th>Picture</th>
@@ -44,7 +57,7 @@
           <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
           <td>{{service.name}}</td>
           <td>{{service.description}}</td>
-          <td>{{service.date}}</td>
+          <td>{{format-date2 service.date}}</td>
           <td>{{service.startAt}}</td>
           <td>{{service.finishAt}}</td>
           <td>{{service.price}}</td>
