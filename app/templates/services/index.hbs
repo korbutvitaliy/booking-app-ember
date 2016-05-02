@@ -17,9 +17,9 @@
         <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
         <td>{{service.name}}</td>
         <td>{{service.description}}</td>
-        <td>{{format-date2 service.date}}</td>
-        <td>{{service.startAt}}</td>
-        <td>{{service.finishAt}}</td>
+        <td>{{format-date service.startAt format="ll"}}</td>
+        <td>{{format-date service.startAt format="LT"}}</td>
+        <td>{{format-date service.finishAt format="LT"}}</td>
         <td>{{service.price}}</td>
       </tr>
     {{/each}}
@@ -57,9 +57,9 @@
           <td><img src="{{service.image}}" alt="Smiley face" height="150" width="150"></td>
           <td>{{service.name}}</td>
           <td>{{service.description}}</td>
-          <td>{{format-date2 service.date}}</td>
-          <td>{{service.startAt}}</td>
-          <td>{{service.finishAt}}</td>
+          <td>{{format-date service.startAt format="ll"}}</td>
+          <td>{{format-date service.startAt format="LT"}}</td>
+          <td>{{format-date service.finishAt format="LT"}}</td>
           <td>{{service.price}}</td>
           <td>{{#link-to 'services.show' service.id}}<a href>Read more</a>{{/link-to}}</td>
         </tr>

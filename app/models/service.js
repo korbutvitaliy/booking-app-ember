@@ -11,7 +11,6 @@ export default Model.extend({
   price:       attr('number'),
   image:       attr('string'),
   booked:      attr('boolean'),
-  date: 			 attr('date'),
-  startAt: 		 attr('fire-time'),
-  finishAt: 	 attr('fire-time')
+  startAt: 		 attr('number'),
+  finishAt: 	 attr('number')
 });

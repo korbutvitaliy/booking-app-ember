@@ -12,16 +12,16 @@ export default Controller.extend({
 	isServiceProvider: equal('currentUser.role', 'service provider'),
 	isConsumer: equal('currentUser.role', 'consumer'),
 	filterFutureServices: filter('model.services', function (service) {
-		if (moment(service.get('date')).isSameOrAfter()) {
+		if (moment(service.get('startAt')).isSameOrAfter()) {
 			return service;
 		}
-	}),
+	}).property('model.services.[]'),
 	filterViaUser: filter('filterFutureServices', function(service) {
-		if (moment(service.get('date').toISOString()).isBetween(this.get('fromDay'), this.get('toDay'))) {
+		if (moment(service.get('startAt')).isBetween(this.get('fromDay'), this.get('toDay'))) {
 			return service;
 		}
-	}).property('fromDay','toDay'),
-	sortingAsc: ['date:asc'],
+	}).property('filterFutureServices.[]','fromDay','toDay'),
+	sortingAsc: ['startAt:asc'],
 	sortingPrice: ['price:asc'],
 	sortedList: sort('filterViaUser','sortingAsc').property('sortingAsc'),
 	
@@ -36,12 +36,12 @@ export default Controller.extend({
 			}
 		},
 		filter(){
-			if (moment(this.get('date1').toISOString()).isBefore(this.get('date2').toISOString())) {
-				this.set('fromDay', moment(this.get('date1')));
-				this.set('toDay', moment(this.get('date2')));
+			if (moment(this.get('date1')).isBefore(this.get('date2'))) {
+				this.set('fromDay', moment(this.get('date1')).startOf('day'));
+				this.set('toDay', moment(this.get('date2')).endOf('day'));
 			} else {
-				this.set('fromDay', moment(this.get('date1')).toISOString());
-				this.set('toDay', moment(this.get('date2')).toISOString());
+				this.set('fromDay', moment(this.get('date1')).startOf('day'));
+				this.set('toDay', moment(this.get('date2')).endOf('day'));
 			}
 		},
 		clear(){

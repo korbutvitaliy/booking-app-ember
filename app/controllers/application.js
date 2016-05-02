@@ -39,10 +39,8 @@ export default Ember.Controller.extend({
 	 	},
 	 	changeMessageCounter(){
   		Ember.run.later(this ,function() {		
-	 		  console.log(this.get('notMyMessages.length'));
 	 		  let id = this.get('currentUser.id');
 	 			let length = this.get('notMyMessages.length');
-	 		  console.log(id);
 	 			this.store.findRecord('user', id).then(function(user) {
 	 				user.set('messageCounter', length);
 	 				user.save();

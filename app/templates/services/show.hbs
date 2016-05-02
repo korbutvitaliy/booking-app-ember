@@ -12,15 +12,15 @@
         <td>
             <tr>
                 <td>Date:</td>
-                <td>{{model.service.date}}</td>
+                <td>{{format-date model.service.startAt format="ll"}}</td>
             </tr>
             <tr>
                 <td>From:</td>
-                <td>{{model.service.startAt}}</td>
+                <td>{{format-date model.service.startAt format="LT"}}</td>
             </tr>
             <tr>
                 <td>To:</td>
-                <td>{{model.service.finishAt}}</td>
+                <td>{{format-date model.service.finishAt format="LT"}}</td>
             </tr>
             <tr>
                 <td>Price:</td>

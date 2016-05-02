@@ -29,19 +29,19 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Date</label>
         <div class="col-sm-4" >
-            {{pick-a-date date=(readonly model.newService.date) on-selected=(action (mut model.newService.date)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}}
+            {{pick-a-date date=(readonly model.newService.date1) on-selected=(action (mut model.newService.date1)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}}
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">From</label>
         <div  class="col-sm-3">
-            {{pick-a-time date=model.newService.startAt on-selected=(action (mut model.newService.startAt)) placeholder="Pick a time" options=(readonly extraPickadateOptions)}}
+            {{pick-a-time date=model.newService.startAt1 on-selected=(action (mut model.newService.startAt1)) placeholder="Pick a time" options=(readonly extraPickadateOptions)}}
         </div>
     </div>
      <div class="form-group">
         <label class="col-sm-2 control-label">To</label>
         <div  class="col-sm-3">
-            {{pick-a-time date=model.newService.finishAt on-selected=(action (mut model.newService.finishAt)) placeholder="Pick a time" options=(readonly extraPickadateOptions)}}
+            {{pick-a-time date=model.newService.finishAt1 on-selected=(action (mut model.newService.finishAt1)) placeholder="Pick a time" options=(readonly extraPickadateOptions)}}
         </div>
     </div>
     <div class="form-group">
