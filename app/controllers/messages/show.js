@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	message_params: 0,
-  isAlreadySent: Ember.computed.filter('model.bookings', function(booking) { 
-  	return booking.get('whoBooked.id') === this.get('currentUser.id')
-  	}
-  ),
   lastMessages: Ember.computed(function() { 
   	let params = this.get('message_params');
   	let arr = this.get('model.messages').toArray();
@@ -23,6 +19,7 @@ export default Ember.Controller.extend({
 					.store
 					.createRecord('message',{
   					sender_name: 		 this.get('currentUser.name'),
+  					sender_id: 		   this.get('currentUser.id'),
 						body: 					 model.newMessage,
 						timestamp: new Date().getTime()
 					});

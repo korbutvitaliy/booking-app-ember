@@ -47,6 +47,8 @@ export default Controller.extend({
 		clear(){
 			this.set('fromDay', moment());
 			this.set('toDay', moment().add(5, 'y'));
+			this.set('date1', null);
+			this.set('date2', null);
 		}
 	}
 });

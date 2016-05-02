@@ -8,6 +8,7 @@ const {
 } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
+  
 
 	model() {
   	const query = {};
@@ -27,6 +28,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return this.store.query('booking', query)
     
   },
+  afterModel(model,transition) {
+    this.controllerFor('application').send('changeBookingCounter');
+  },
 
   setupController(controller, model) {
   	controller.setProperties({
@@ -35,5 +39,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
   		accepted: model.filterBy('bookingState', 'confirmed'),
       rejected: model.filterBy('bookingState', 'rejected')
   	})
+  },
+  actions: {
+    changeIsNewBooking() {
+      return true;
+    },
   }
 });

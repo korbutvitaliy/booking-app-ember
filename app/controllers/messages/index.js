@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const {
-  computed: { equal, sort },
+  computed: { equal, sort, mapBy },
   Controller
 } = Ember;
 

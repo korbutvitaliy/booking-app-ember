@@ -23,6 +23,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
       Ember.merge(query, query2);
     }
     return this.store.query('conversation', query)
-    
-  }
+  },
+  afterModel(model,transition) {
+    this.controllerFor('application').send('changeMessageCounter');
+  },
 });

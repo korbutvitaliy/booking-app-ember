@@ -1,7 +1,7 @@
 {{#if isServiceProvider}}
   {{#link-to 'services.new' tagName="li"}}<a href>Add new service</a>{{/link-to}}
   <h1>All your services:</h1>
-  <h2>Total number of your services: {{model.services.length}}</h2>
+  <h2>Total number of your services: {{filterViaUser.length}}</h2>
   <table>
     <tr>
       <th>Picture</th>

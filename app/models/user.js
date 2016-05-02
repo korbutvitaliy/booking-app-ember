@@ -10,5 +10,7 @@ export default Model.extend({
 
   
   role:     			attr('string'),
-  email:    			attr('string')
+  email:    			attr('string'),
+  messageCounter: attr('number'),
+  bookingCounter: attr('number')
 });

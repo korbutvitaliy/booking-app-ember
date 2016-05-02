@@ -8,7 +8,7 @@ const {
 } = Ember;
 
 export default Route.extend(ApplicationRouteMixin, {
-
+  
   store:    service(),
   session:  service(),
   firebase: service(),
@@ -17,7 +17,25 @@ export default Route.extend(ApplicationRouteMixin, {
       return this._populateCurrentUser();
     }
   },
-  model () {
+  model() {
+    const query = {};
+    if (this.get('currentUser.role') === 'service provider') {
+      let query2 = {
+        orderBy: 'serviceProvider',
+        equalTo: this.get('currentUser.id'),
+      };
+      Ember.merge(query, query2);
+    } else {
+      let query2 = {
+            orderBy: 'customer',
+            equalTo: this.get('currentUser.id'),
+          };
+      Ember.merge(query, query2);
+    }
+    return RSVP.hash({
+    booking: this.store.query('booking', query),
+    conversation: this.store.query('conversation', query)
+    })
   },
 
   authenticateWithPassword ({email, password}) {

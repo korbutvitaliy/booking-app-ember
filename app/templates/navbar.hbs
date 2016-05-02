@@ -12,9 +12,17 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
         {{#link-to 'services' tagName="li"}}<a href="">Services</a>{{/link-to}}
-        {{#link-to 'bookings' tagName="li"}}<a href="">Bookings</a>{{/link-to}}
-        {{#link-to 'contacts' tagName="li"}}<a href="">Contacts</a>{{/link-to}}
-        {{#link-to 'messages' tagName="li"}}<a href="">Messages</a>{{/link-to}}
+        {{#if isNewBooking}}
+          {{#link-to 'bookings' tagName="li"}}<a href="">Bookings NEW!</a>{{/link-to}}
+        {{else}}
+          {{#link-to 'bookings' tagName="li"}}<a href="">Bookings</a>{{/link-to}}
+        {{/if}} 
+          {{#link-to 'contacts' tagName="li"}}<a href="">Contacts</a>{{/link-to}}
+        {{#if isNewMessage}}
+          {{#link-to 'messages' tagName="li"}}<a href="">Messages NEW!</a>{{/link-to}}
+        {{else}}
+          {{#link-to 'messages' tagName="li"}}<a href="">Messages</a>{{/link-to}}
+        {{/if}}
       </ul>
     <ul class='nav navbar-nav navbar-right'>
       {{#link-to 'notifications' tagName="li"}}<a href="">Notifications</a>{{/link-to}}

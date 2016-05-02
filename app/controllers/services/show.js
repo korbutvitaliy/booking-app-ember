@@ -22,6 +22,7 @@ export default Ember.Controller.extend({
 					.store
 					.createRecord('message',{
   					sender_name: 		 this.get('currentUser.name'),
+  					sender_id: 		   this.get('currentUser.id'),
 						body: 					 model.newMessage,
 						timestamp: new Date().getTime()
 					});

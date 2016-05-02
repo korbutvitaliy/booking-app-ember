@@ -19,6 +19,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
     hide(notification) {
       notification.set('hidden', true);
       notification.save();
+    },
+    hideAll(model) {
+      model.setEach('hidden', true);
+      model.save();
     }
   }
+
 });
