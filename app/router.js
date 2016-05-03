@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('sign-up');
-  this.route('sign-in', { path: '/' });
+  this.route('sign-in');
   this.route('services', function() {
     this.route('new');
     this.route('show', { path: ':service_id' });
@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('messages', function() {
     this.route('show', { path: ':conversation_id' });
   });
+  this.route('about', { path: '/' });
 });
 
 

@@ -11,7 +11,7 @@
 				<th>{{conversation.customer_name}}</th>
 				<th>{{conversation.last_message_name}}</th>
 			 	<th>{{conversation.last_message}}</th>
-			 	<th>{{format-date conversation.last_update}}</th>		
+			 	<th>{{format-date conversation.last_update format='lll'}}</th>		
 			{{/link-to}} 	
 		{{/each}}
 	</table>
@@ -29,7 +29,7 @@
 				<th>{{conversation.provider_name}}</th>
 				<th>{{conversation.last_message_name}}</th>
 			 	<th>{{conversation.last_message}}</th>
-			 	<th>{{format-date conversation.last_update}}</th>		
+			 	<th>{{format-date conversation.last_update format='lll'}}</th>		
 			{{/link-to}} 	
 		{{/each}}
 	</table>

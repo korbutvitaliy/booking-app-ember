@@ -6,11 +6,12 @@ export default Model.extend({
   user:        belongsTo('user'),
   bookings:    hasMany('booking'),
   
-  name:        attr('string'),
-  description: attr('string'),
-  price:       attr('number'),
-  image:       attr('string'),
-  booked:      attr('boolean'),
-  startAt: 		 attr('number'),
-  finishAt: 	 attr('number')
+  name:         attr('string'),
+  provider_name:attr('string'),
+  description:  attr('string'),
+  price:        attr('number'),
+  image:        attr('string'),
+  booked:       attr('boolean'),
+  startAt: 		  attr('number'),
+  finishAt: 	  attr('number')
 });

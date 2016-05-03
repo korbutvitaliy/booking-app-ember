@@ -20,19 +20,19 @@
   <h2>Accepted requests: {{accepted.length}}</h2>
   <table>
     <tr>  
-      <th>Service Name</th>
-      <th>Name</th>
-      <th>Day</th>
-      <th>Time</th>
-      <th>Reject</th>
+      <th class="col-xs-1">Service Name</th>
+      <th class="col-xs-1">Name</th>
+      <th class="col-xs-2">Day</th>
+      <th class="col-xs-2">Time</th>
+      <th class="col-xs-2">Reject</th>
     </tr>
     {{#each accepted as |booking|}}
     <tr>
-      <td>{{booking.bookedService.name}}</td>
-      <td>{{booking.whoBooked.name}}</td>
-      <td>{{format-date booking.startAt format="ll"}}</td>
-      <td>{{format-date booking.startAt format="LT"}}</td>
-       <td><button type="submit" class="btn btn-sm btn-danger" {{action 'reject' booking}}>I changed my mind</button></td>
+      <td >{{booking.bookedService.name}}</td>
+      <td >{{booking.whoBooked.name}}</td>
+      <td >{{format-date booking.startAt format="ll"}}</td>
+      <td >{{format-date booking.startAt format="LT"}}</td>
+      <td ><button type="submit" class="btn btn-sm btn-danger" {{action 'reject' booking}}>Reject</button></td>
     </tr>
     {{/each}}
   </table>

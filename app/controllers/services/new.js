@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
       newService
        .setProperties({
         user: this.get('currentUser.content'),
+        provider_name: this.get('currentUser.name'),
         startAt: date2+startAt2,
         finishAt: date2+ finishAt2
       });
@@ -18,6 +19,9 @@ export default Ember.Controller.extend({
          .then(()   => newService.get('user'))  // See https://www.firebase.com/docs/web/libraries/ember/guide.html#section-relationships
          .then(user => user.save())     
          .then(()   => this.transitionToRoute('services.index'));
+     },
+     cancel() {
+      this.transitionToRoute('services');
      }
   }
 });

@@ -1,25 +1,26 @@
-<div class="col-sm-4">
+<div class="text-center">
   <button type="submit" class="btn btn-default" {{action 'showMore'}}>Show more messages</button>
 </div>
 <table>
 	<tr>
-		<th>Name</th>
-		<th>Message</th>
-		<th>Time sent</th>
+		<th class="col-xs-2">Name</th>
+		<th class="col-xs-6">Message</th>
+		<th class="col-xs-4">Time sent</th>
 	</tr>
 	{{#each lastMessages as |message|}}
 	<tr>
-		<td>{{message.sender_name}}</td>
-		<td>{{message.body}}</td>
-		<th>{{format-date message.timestamp}}</th>
+		<td class="col-xs-2">{{message.sender_name}}</td>
+		<td class="col-xs-6">{{message.body}}</td>
+		<td class="col-xs-4">{{format-date message.timestamp format='lll'}}</td>
 	</tr>
 	{{/each}}
-	<div class="panel-body">
-    <div class="col-sm-8">
-      {{textarea rows="6" value=model.newMessage class="form-control" placeholder="Type a message here..."}}
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-success btn-lg"   {{action 'sendMessage' model }}>Send message</button>
-    </div>
-  </div>
 </table> 
+<div class="panel-body">
+  <div class="text-center">
+    {{textarea rows="6" value=model.newMessage class="form-control col-xs-12" placeholder="Type a message here..."}}
+  </div>
+  <br>
+  <div class="text-center">
+    <button type="submit" class="btn btn-success btn-lg col-xs-12"   {{action 'sendMessage' model }}>Send message</button>
+  </div>
+</div>

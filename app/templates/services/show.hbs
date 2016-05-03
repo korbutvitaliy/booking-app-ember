@@ -1,8 +1,4 @@
 {{notification-container notifications=notifications position="top"}}
-{{model.bookings.length}}
-{{isAlreadySent.length}}
-{{confirmedBookings.length}}
-{{bookedForThisTime.length}}
 {{#link-to 'services.index' tagName="li"}}<a href>Back to all services</a>{{/link-to}}
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -11,7 +7,7 @@
   <div class="panel-body">
     <table>
       <tr>
-        <td><img src="{{model.service.image}}" alt="Smiley face" height="300" width="300"></td>
+        <td><img src="{{model.service.image}}" alt="Smiley face" class="img-responsive"></td>
         <td>
             <tr>
                 <td>Date:</td>

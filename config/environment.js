@@ -22,7 +22,7 @@ module.exports = function(environment) {
     defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {
-        // Here you can enable experimental features on an ember canary build
+        // Here you can enable experimental features on an EmberENV canary build
         // e.g. 'with-controller': true
       }
     },
@@ -33,9 +33,13 @@ module.exports = function(environment) {
     },
 
     cordova: {
-      rebuildOnChange: false,
+      rebuildOnChange: true,
       emulate: false,
-      platform: 'android'
+      platform: 'android',
+      liveReload: {
+        enabled: false,
+        platform: 'android'
+      }
     }
   };
 

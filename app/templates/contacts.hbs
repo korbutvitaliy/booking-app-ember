@@ -11,8 +11,8 @@
     <tr>
       <td>{{booking.bookedService.name}}</td>
       <td>{{booking.whoBooked.name}}</td>
-      <td>{{booking.bookedService.date}}</td>
-      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{format-date booking.startAt format="ll"}}</td>
+      <td>{{format-date booking.startAt format="LT"}}</td>
       <td>{{booking.whoBooked.phone}}</td>
     </tr>
 	{{/each}}
@@ -20,7 +20,7 @@
 {{/if}}
 {{#if isConsumer}}
 <table>
-  <tr>
+  <tr >
     <th>Service Name</th>
     <th>Name</th>
     <th>Day</th>
@@ -31,8 +31,8 @@
     <tr>
       <td>{{booking.bookedService.name}}</td>
       <td>{{booking.bookedService.user.name}}</td>
-      <td>{{booking.bookedService.date}}</td>
-      <td>{{booking.bookedService.startAt}}</td>
+      <td>{{format-date booking.startAt format="ll"}}</td>
+      <td>{{format-date booking.startAt format="LT"}}</td>
       <td>{{booking.whoBooked.phone}}</td>
     </tr>
 	{{/each}}

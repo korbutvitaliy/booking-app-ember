@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
 						customer: 				 this.get('currentUser.id'),
 						serviceProvider: 	 model.service.get('user.id'),
 						customer_name:   	 this.get('currentUser.name'),
-						provider_name:   	 model.service.get('user.name'),
+						provider_name:   	 model.service.get('provider_name'),
 						last_message: 		 model.newMessage,
 						last_update: 			 message.get('timestamp'),
 						last_message_name: this.get('currentUser.name')
