@@ -1,11 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  isAlreadySent: Ember.computed.filter('model.bookings', function(booking) { 
-  	return booking.get('whoBooked.id') === this.get('currentUser.id')
+  isAlreadySent: 		 Ember.computed.filter('model.bookings', function(booking) { 
+  	return booking.get('bookedService.id') === this.get('model.service.id')
   	}
   ),
-  filteredConv: Ember.computed.filter('model.conversation1', function(conversation) { 
+  confirmedBookings: Ember.computed.filter('model.bookings', function(booking){
+  	return booking.get('bookingState') === 'confirmed' || booking.get('bookingState') === 'pending'
+  }),
+  bookedForThisTime: Ember.computed.filter('confirmedBookings.[]',function(booking){
+  	if (moment(this.get('model.service.startAt')).isBetween(booking.get('startAt'), booking.get('finishAt'))) {
+  		return booking
+  	}
+  }),
+  filteredConv: 		 Ember.computed.filter('model.conversation1', function(conversation) { 
   	return conversation.get('serviceProvider') === this.get('model.service.user.id')
   	}
   ),
@@ -75,8 +83,8 @@ export default Ember.Controller.extend({
 						bookedService: model.service,
 						whoBooked: this.get('currentUser.content'),
 						bookingState: 'pending',
-						date: model.service.get('date'),
-						startAt: model.service.get('startAt')
+						startAt: model.service.get('startAt'),
+						finishAt: model.service.get('finishAt')
 					});
 
 

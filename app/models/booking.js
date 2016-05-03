@@ -8,6 +8,6 @@ export default Model.extend({
   whoBooked:      	belongsTo('user'),
 
   bookingState: 		attr('string'),
-  date: 			 attr(),
-  startAt: 		 attr(),
+  startAt: 		 			attr('number'),
+  finishAt: 	 			attr('number')
 });

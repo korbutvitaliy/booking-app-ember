@@ -1,5 +1,8 @@
 {{notification-container notifications=notifications position="top"}}
-
+{{model.bookings.length}}
+{{isAlreadySent.length}}
+{{confirmedBookings.length}}
+{{bookedForThisTime.length}}
 {{#link-to 'services.index' tagName="li"}}<a href>Back to all services</a>{{/link-to}}
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -41,6 +44,12 @@
     <h4>We have recieved your booking request</h4>
     <h4>You can see status of request {{link-to 'here' 'bookings'}}</h4>
     {{else}}
+      {{#if bookedForThisTime}}
+        <h4>You have already booked for this time another service:</h4>
+        {{#each bookedForThisTime as |booking|}}
+          <p>{{booking.bookedService.name}}</p>
+        {{/each}}
+      {{else}}    
     <div class="panel-body">
         <h4>You can add a message to provider if you have questions</h4>
         <div class="col-sm-4">
@@ -50,6 +59,7 @@
           <button type="submit" class="btn btn-success "   {{action 'SaveRequest' model}}>Request a booking</button>
         </div>
       </div>
+      {{/if}}
     {{/if}}
   {{/if}}
 </div>

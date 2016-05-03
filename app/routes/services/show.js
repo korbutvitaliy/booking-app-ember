@@ -17,8 +17,8 @@ export default Route.extend({
         equalTo: this.get('currentUser.id')
       }),
       bookings:       store.query('booking', {
-        orderBy: 'bookedService',
-        equalTo: params.service_id,
+        orderBy: 'whoBooked',
+        equalTo: this.get('currentUser.id')
         })
     })
   },
