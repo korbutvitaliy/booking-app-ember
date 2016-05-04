@@ -20,7 +20,7 @@
         <td class="col-xs-1">{{format-date service.startAt format="ll"}}</td>
         <td class="col-xs-1">{{format-date service.startAt format="LT"}}</td>
         <td class="col-xs-1">{{format-date service.finishAt format="LT"}}</td>
-        <td class="col-xs-1">{{service.price}}</td>
+        <td class="col-xs-1">{{service.price}}$</td>
       </tr>
     {{/each}}
   </table>
@@ -60,7 +60,7 @@
           <td class="col-xs-1">{{format-date service.startAt format="ll"}}</td>
           <td class="col-xs-1">{{format-date service.startAt format="LT"}}</td>
           <td class="col-xs-1">{{format-date service.finishAt format="LT"}}</td>
-          <td class="col-xs-1">{{service.price}}</td>
+          <td class="col-xs-1">{{service.price}}$</td>
           <td class="col-xs-1">{{#link-to 'services.show' service.id class='btn btn-success'}}Read more{{/link-to}}</td>
         </tr>
       {{/unless}}
