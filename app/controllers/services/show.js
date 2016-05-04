@@ -92,16 +92,7 @@ export default Ember.Controller.extend({
 
 			model.service.save()
 			.then(()   => this.get('currentUser.content'))
-			.then(user => user.save());
-			let notification =
-			this
-				.store
-				.createRecord('notification', {
-					toWhom: model.service.get('user'),
-					subject: "New request for ",
-					service: model.service.get('name'),
-				});
-			notification.save()
+			.then(user => user.save())
 			.then(() => this.notifications.success('Request has been sent', {
 				autoClear: true
 			}));

@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
     	.reduce((result, messages) => result.concat(messages.toArray()), []);
   }),
   notMyMessages: Ember.computed.filter('totalMessages', function(message) {
-  	return message.get('sender_id') !== this.get('currentUser.id')
+  		return message.get('sender_id') !== this.get('currentUser.id')
   }),
   isNewMessage: Ember.computed('notMyMessages','currentUser.messageCounter', function(){
 		if (this.get('notMyMessages.length') > this.get('currentUser.messageCounter')) {

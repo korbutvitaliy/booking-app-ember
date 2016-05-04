@@ -2,10 +2,10 @@
   <h2>Pending requests: {{pending.length}}</h2>
   <table>
     <tr>
-      <th>Service Name</th>
-      <th>Name</th>
-      <th>Accept</th>
-      <th>Reject</th>
+      <th class="col-xs-3">Service Name</th>
+      <th class="col-xs-3">Name</th>
+      <th class="col-xs-2">Accept</th>
+      <th class="col-xs-2">Reject</th>
     </tr>
     {{#each pending as |booking|}}
       <tr>
@@ -20,8 +20,8 @@
   <h2>Accepted requests: {{accepted.length}}</h2>
   <table>
     <tr>  
-      <th class="col-xs-1">Service Name</th>
-      <th class="col-xs-1">Name</th>
+      <th class="col-xs-2">Service Name</th>
+      <th class="col-xs-2">Name</th>
       <th class="col-xs-2">Day</th>
       <th class="col-xs-2">Time</th>
       <th class="col-xs-2">Reject</th>
@@ -42,9 +42,9 @@
   <h2>Pending requests: {{pending.length}}</h2>
   <table>
     <tr>
-      <th>Service Name</th>
-      <th>Day</th>
-      <th>Time</th>
+      <th class="col-xs-8">Service Name</th>
+      <th class="col-xs-2">Day</th>
+      <th class="col-xs-2">Time</th>
     </tr>
     {{#each pending as |booking|}}
     <tr>
@@ -57,9 +57,9 @@
   <h2>Accepted requests: {{accepted.length}}</h2>
   <table>
     <tr>
-      <th>Service Name</th>
-      <th>Day</th>
-      <th>Time</th>
+      <th class="col-xs-8">Service Name</th>
+      <th class="col-xs-2">Day</th>
+      <th class="col-xs-2">Time</th>
     </tr>
     {{#each accepted as |booking|}}
     <tr>
