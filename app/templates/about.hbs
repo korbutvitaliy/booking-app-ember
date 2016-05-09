@@ -1,21 +1,18 @@
 <div class="jumbotron">
-	<h2>Welcome to a Booking App built on Ember.JS</h2>
-	<h3>You can sign-up as service provider or as customer.<br>
-	Service providers can:</h3>
-	<p>
-		-Create new services<br>
-		-Accept and reject booking request<br>
-		-Answer customers questions via chat<br>
-		-See contacts of a customer that booked their service
-	</p>
-	<h3>Customers can:</h3>
-	<p>
-		-Filter services<br>
-		-Send booking requests<br>
-		-Ask service providers questins about services<br>
-		-See contacts of a service provider whose service they booked
-	</p>
-	{{#link-to 'sign-in' class='btn btn-primary btn-lg'}}Sign in{{/link-to}}
-	{{#link-to 'sign-up' class='btn btn-success btn-lg'}}Sign up{{/link-to}}
-	<h3>If you have an interesting project using Ember.JS or Ruby on Rails, you can contact me: <strong>buzunkostas@gmail.com</strong></h3>
+	<h2>Welcome to a Booking App built on Ember.JS with Firebase</h2>
+	<h3>You can sign-up as service provider or as customer.</h3>
+	<h4>For demo use:<br>
+		login: <strong>1@gmail.com</strong> <br>
+		pass:  <strong>123456</strong> - to login as service provider
+		<br> <br>
+		login: <strong>2@gmail.com</strong> <br> 
+		pass: <strong>123456</strong> - to login as customer<br>
+		<a href="https://drive.google.com/open?id=0B2P-7-pUVhy8WkM5OTNENHdFRFU">APK file</a> 
+	</h4>
+	{{#if session.isAuthenticated}}
+	{{else}}
+	{{#link-to 'sign-in' class='btn btn-primary'}}Sign in{{/link-to}}
+	{{#link-to 'sign-up' class='btn btn-success'}}Sign up{{/link-to}}
+	{{/if}}
+	<h3>If you have an interesting project using Ember.JS or Ruby on Rails, contact me: <strong>buzunkostas@gmail.com</strong></h3>
 </div>
